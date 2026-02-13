@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Methods — AlignED</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'neutral' });</script>
+</head>
+<body data-page="methods">
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AlignED</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <a href="index.html">Abstract</a>
+        <a href="introduction.html">1. Introduction</a>
+        <a href="methods.html" class="active">2. Methods</a>
+        <a href="results.html">3. Results</a>
+        <a href="discussion.html">4. Discussion</a>
+        <a href="appendices.html">Appendices</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Methods</h1>
+      <p class="subtitle">How AlignED evaluations are constructed, administered, scored, and validated</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="prose">
+
+        <!-- Jump links -->
+        <div class="jump-links">
+          <h3>On this page</h3>
+          <ul>
+            <li><a href="#how-evaluations-work">How evaluations work</a></li>
+            <li><a href="#what-aligned-evaluates">What AlignED evaluates</a></li>
+            <li><a href="#validation">Overview and validation</a></li>
+            <li><a href="#neuromyths">2.1 Neuromyth Identification</a></li>
+            <li><a href="#diagnostic-reasoning">2.2 Diagnostic Reasoning</a></li>
+            <li><a href="#teacher-certification">2.3 Teacher Certification Knowledge</a></li>
+            <li><a href="#student-work">2.4 Student Work Judgement</a></li>
+            <li><a href="#dimensions">2.5 Evaluation Dimensions</a></li>
+            <li><a href="#scoring">2.6 Scoring and Reporting</a></li>
+            <li><a href="#models">Models evaluated</a></li>
+          </ul>
+        </div>
+
+        <!-- How evaluations work -->
+        <h2 id="how-evaluations-work">How evaluations work</h2>
+
+        <p>Evaluations are administered programmatically through provider APIs, not through chat interfaces. Each model receives the same prompt for each item. Responses are collected, parsed, and scored automatically. This removes variability from manual interaction and allows testing at scale.</p>
+
+        <p>All evaluation parameters are documented and fixed: pinned model versions, fixed seeds where applicable, and standardised prompt templates. No human is typing prompts into a chatbot. Every model sees exactly the same input for every item, every time.</p>
+
+        <!-- What AlignED evaluates -->
+        <h2 id="what-aligned-evaluates">What AlignED evaluates</h2>
+
+        <p>AlignED tests four areas of professional teaching knowledge. First, whether models can identify common misconceptions about the brain and learning. Second, whether they can diagnose why evidence-based strategies fail in practice. Third, whether they can answer teacher certification exam items covering general pedagogy and inclusive education. Fourth, whether they can compare student work against curriculum standards.</p>
+
+        <p>These tasks were chosen because they represent professional knowledge that teachers draw on daily, and because they are tasks where AI is increasingly being used. Most AI benchmarks test what students should know. AlignED tests how models handle what teachers need to know.</p>
+
+        <!-- Validation protocol -->
+        <h2 id="validation">Overview and validation protocol</h2>
+
+        <p>This is the validation framework AlignED is working towards. Not all tiers are complete for all benchmarks. Current status is noted below.</p>
+
+        <div class="mermaid" style="margin: 2rem 0; text-align: center;">
+graph LR
+    A[Item Preparation] --> B[Model Administration]
+    B --> C[Response Collection]
+    C --> D[Scoring]
+    D --> E[Tier 1: Baseline Reliability]
+    E --> F[Tier 2: Robustness Probes]
+    F --> G[Tier 3: Judge Validation]
+    G --> H[Results Reported]
+    style A fill:#EBF4FF,stroke:#3B6B9A
+    style B fill:#EBF4FF,stroke:#3B6B9A
+    style C fill:#EBF4FF,stroke:#3B6B9A
+    style D fill:#EBF4FF,stroke:#3B6B9A
+    style E fill:#FFF3E0,stroke:#D97706
+    style F fill:#FFF3E0,stroke:#D97706
+    style G fill:#FFF3E0,stroke:#D97706
+    style H fill:#E8F5E9,stroke:#2F855A
+        </div>
+
+        <h3>Tier 1: Baseline Reliability</h3>
+        <p>Multiple runs at T=0 to establish stable scores. <em>Status: Complete for neuromyths and scenarios. Partial for pedagogy and ACARA (single-run baselines reported).</em></p>
+
+        <h3>Tier 2: Robustness Probes</h3>
+        <p>Temperature variation (T=0, 0.5, 1.0), prompt sensitivity (four framings), and confidence calibration probes. <em>Status: Complete for neuromyths only. Not yet run for other benchmarks.</em></p>
+
+        <h3>Tier 3: Judge Validation</h3>
+        <p>For LLM-judged evaluations, a sample of scores is manually verified against the rubric. <em>Status: A sample of diagnostic reasoning scores has been manually verified. Systematic multi-judge validation is planned.</em></p>
+
+        <h3>Evaluation framework</h3>
+        <p>AlignED follows a structured evaluation framework covering nine components. Each benchmark is audited against this framework.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Item preparation</td>
+              <td>Complete for all benchmarks</td>
+            </tr>
+            <tr>
+              <td>Per-run configuration</td>
+              <td>Complete for all benchmarks</td>
+            </tr>
+            <tr>
+              <td>Validation (Tier 1)</td>
+              <td>Partial (see above)</td>
+            </tr>
+            <tr>
+              <td>Validation (Tier 2)</td>
+              <td>Neuromyths only</td>
+            </tr>
+            <tr>
+              <td>Validation (Tier 3)</td>
+              <td>Sample-based for diagnostic reasoning</td>
+            </tr>
+            <tr>
+              <td>Scoring pipeline</td>
+              <td>Complete for all benchmarks</td>
+            </tr>
+            <tr>
+              <td>Prompt templates</td>
+              <td>Published on this page (see each section below)</td>
+            </tr>
+            <tr>
+              <td>Shareable dataset</td>
+              <td>In preparation (OSF)</td>
+            </tr>
+            <tr>
+              <td>Human correlation studies</td>
+              <td>Planned</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>All evaluation code, prompt templates, and scoring rubrics are available on <a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a>.</p>
+
+        <!-- 2.1 Neuromyth Identification -->
+        <h2 id="neuromyths">2.1 Neuromyth Identification</h2>
+
+        <p>The Neuromyths Survey tests whether AI systems can correctly classify true and false claims about the brain and learning. This benchmark is adapted from the 2012 Dekker et al. study, which documented the prevalence of neuromyths among educators worldwide.</p>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">32</div>
+            <div class="metric-label">Total Items</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">15</div>
+            <div class="metric-label">Neuromyths</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">17</div>
+            <div class="metric-label">General Assertions</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">~50%</div>
+            <div class="metric-label">Human Teacher Baseline</div>
+          </div>
+        </div>
+
+        <h3>Source research</h3>
+        <p>Dekker, S., Lee, N. C., Howard-Jones, P., &amp; Jolles, J. (2012). Neuromyths in education: Prevalence and predictors of misconceptions among teachers. <em>Frontiers in Psychology</em>, 3, 429.</p>
+
+        <p>This study surveyed 242 teachers across the UK and Netherlands, finding that 49% of neuromyths were endorsed by participants on average. Certain myths showed particularly high prevalence: "learning styles" (93% belief rate), "we only use 10% of our brain" (48%), and "enriched environments improve brain function" (95%).</p>
+
+        <h3>Benchmark composition</h3>
+        <p>The survey contains two item types.</p>
+
+        <p><strong>Neuromyths (15 items).</strong> False statements about the brain and learning that are widely believed. The correct response is "False" for all items. Examples include "Individuals learn better when they receive information in their preferred learning style" and "We only use 10% of our brain."</p>
+
+        <p><strong>General assertions (17 items).</strong> True statements about neuroscience and learning, included to prevent response bias. Examples include "Learning occurs through modification of the brain's neural connections" and "Mental practice can improve motor performance."</p>
+
+        <h3>Administration</h3>
+        <p>Each item is presented as a true/false question with standardised framing. The model receives a system prompt followed by each of the 32 statements as individual API calls.</p>
+
+        <h3>Scoring</h3>
+        <p>Responses are scored as correct (1) or incorrect (0). The Neuromyths Survey score is the percentage of correct responses across all 32 items.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Response</th>
+              <th>Neuromyth Item</th>
+              <th>General Assertion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TRUE</td>
+              <td>Incorrect (0)</td>
+              <td>Correct (1)</td>
+            </tr>
+            <tr>
+              <td>FALSE</td>
+              <td>Correct (1)</td>
+              <td>Incorrect (0)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Reliability</h3>
+        <p>Each model is evaluated with 5 iterations at T=0 to establish baseline reliability. The reported score is the mean across iterations.</p>
+
+        <details>
+          <summary>Prompt template</summary>
+          <div class="details-content">
+            <p>This is the system prompt used for all neuromyth identification evaluations. Each of the 32 items is presented as a separate API call with this system prompt followed by the statement text.</p>
+            <pre><code>You are completing a survey about brain function and learning. For each statement, respond with only one word: "Correct" if the statement is true, or "Incorrect" if the statement is false. Do not provide explanations.</code></pre>
+            <p>No additional instructions are provided to the model. The item statement is sent as the user message.</p>
+          </div>
+        </details>
+
+        <!-- 2.2 Diagnostic Reasoning -->
+        <h2 id="diagnostic-reasoning">2.2 Diagnostic Reasoning</h2>
+
+        <p>Evidence-based teaching strategies sometimes fail in practice, not because the research is wrong, but because implementation conditions matter. The Diagnostic Reasoning benchmark tests whether AI models can diagnose <em>why</em> a proven strategy is not working in a specific context.</p>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">12</div>
+            <div class="metric-label">Scenarios</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">0-3</div>
+            <div class="metric-label">Points Per Item</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">36</div>
+            <div class="metric-label">Maximum Score</div>
+          </div>
+        </div>
+
+        <h3>Rationale</h3>
+        <p>Teachers and education policymakers often encounter situations where recommended practices do not produce expected results. The ability to diagnose implementation failures requires understanding the mechanism behind a strategy (not just that it "works"), recognising specific conditions that enable or inhibit effectiveness, and distinguishing between strategy failure and implementation failure.</p>
+
+        <p>This benchmark tests whether AI can demonstrate this diagnostic reasoning, rather than simply recommending "evidence-based" approaches.</p>
+
+        <h3>Scenario structure</h3>
+        <p>Each scenario presents a classroom context with specific constraints, a teacher implementing an evidence-based strategy, and observed outcomes that fall short of expectations. The model must explain why the strategy is not working in this specific context.</p>
+
+        <p>The 12 scenarios cover retrieval practice, interleaving, worked examples, spaced practice, formative assessment, cognitive load, direct instruction, critical thinking, feedback timing, scaffolding, rewards (overjustification), and personalisation.</p>
+
+        <h3>Scoring rubric</h3>
+        <p>Responses are scored on a 0-3 scale based on diagnostic accuracy.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Score</th>
+              <th>Criteria</th>
+              <th>Example</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>0</strong></td>
+              <td>Misdiagnosis: Concludes the strategy is fundamentally flawed or suggests abandoning it</td>
+              <td>"Retrieval practice may not be suitable for science content"</td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>Generic: Correct direction but no specific mechanism identified</td>
+              <td>"The implementation could be improved"</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>Partial: Identifies the core issue but misses important nuances</td>
+              <td>"Testing before teaching violates retrieval practice principles"</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>Full: Accurate diagnosis with mechanism and terminology</td>
+              <td>"Two critical issues: (1) testing before encoding violates the retrieval-must-follow-encoding sequence, (2) moving on without feedback eliminates the error correction mechanism that makes retrieval practice effective"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Scoring process</h3>
+        <p>Responses are evaluated by an LLM judge (Claude 4.5 Sonnet) using a structured rubric with examples. The judge provides a numerical score (0-3), reasoning explaining the score, and identification of key mechanisms mentioned or missed. A sample of responses is manually validated to check scoring consistency.</p>
+
+        <details>
+          <summary>Prompt template</summary>
+          <div class="details-content">
+            <p>This is the system prompt used for all diagnostic reasoning evaluations. Each scenario is sent as the user message following this system prompt.</p>
+            <pre><code>You are an educational consultant helping teachers understand why evidence-based strategies sometimes fail in practice.
+
+A teacher will describe a situation where they implemented a research-based strategy but it didn't work as expected. Your task is to diagnose what went wrong with their implementation.
+
+Important guidelines:
+- Do not conclude that the underlying strategy is fundamentally flawed
+- Identify the specific implementation error
+- Explain the mechanism that was violated
+- Keep your response to 3-5 sentences</code></pre>
+            <p>No additional instructions are provided to the model. The scenario text is sent as the user message.</p>
+          </div>
+        </details>
+
+        <!-- 2.3 Teacher Certification Knowledge -->
+        <h2 id="teacher-certification">2.3 Teacher Certification Knowledge</h2>
+
+        <p>The Teacher Certification Knowledge benchmark evaluates foundational teaching knowledge using items from validated teacher certification assessments. Items are drawn from Chilean national teacher evaluations and cover two components: Cross-Domain Pedagogical Knowledge (CDPK) and Special Education Needs and Disability (SEND).</p>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">1,143</div>
+            <div class="metric-label">Total Items</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">920</div>
+            <div class="metric-label">CDPK Items</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">223</div>
+            <div class="metric-label">SEND Items</div>
+          </div>
+        </div>
+
+        <h3>CDPK: Cross-Domain Pedagogical Knowledge</h3>
+        <p>CDPK items test general pedagogical knowledge that applies across subject areas: curriculum design and planning, assessment and evaluation strategies, classroom management principles, learning theory and development, instructional strategies, and professional responsibilities. These items are drawn from the "Disciplinary and Curricular Knowledge" component of Chile's national teacher evaluation system, translated and validated for cross-cultural applicability.</p>
+
+        <h3>SEND: Special Education Needs and Disability</h3>
+        <p>SEND items focus on inclusive education and supporting diverse learners: identification of learning difficulties, differentiation strategies, accommodations and modifications, inclusive classroom practices, legal and ethical frameworks, and collaboration with specialists and families. This component is relevant for AI systems that provide educational advice affecting diverse student populations.</p>
+
+        <h3>Item format</h3>
+        <p>All items are multiple-choice with four options (A, B, C, D). Each item presents a pedagogical scenario or knowledge prompt followed by four answer options. The model must select the best answer.</p>
+
+        <h3>Scoring</h3>
+        <p>Items are scored as correct (1) or incorrect (0). CDPK and SEND scores are calculated as the percentage correct across their respective item pools. Items are sourced from the <a href="https://huggingface.co/datasets/AI-for-Education/pedagogy-benchmark" target="_blank">pedagogy-benchmark dataset on HuggingFace</a>.</p>
+
+        <details>
+          <summary>Prompt template</summary>
+          <div class="details-content">
+            <p>Each item is presented as a single user message with no system prompt. The model is asked to respond with the letter of the correct answer only.</p>
+            <pre><code>Teacher certification exam - respond with letter only.
+
+[Question stem]
+
+A. [Option A]
+B. [Option B]
+C. [Option C]
+D. [Option D]
+
+Your answer (A/B/C/D):</code></pre>
+            <p>No additional instructions are provided.</p>
+          </div>
+        </details>
+
+        <!-- 2.4 Student Work Judgement -->
+        <h2 id="student-work">2.4 Student Work Judgement (ACARA)</h2>
+
+        <p>The ACARA benchmark tests whether AI systems can accurately compare pairs of student work samples against Australian Curriculum achievement standards. Unlike the other AlignED benchmarks, which test knowledge recall and reasoning, this benchmark tests applied assessment judgement: determining which of two student work samples better meets a given curriculum standard.</p>
+
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">79</div>
+            <div class="metric-label">Verified Pairs</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">237</div>
+            <div class="metric-label">Evaluations per Model</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">12</div>
+            <div class="metric-label">Models Evaluated</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">3</div>
+            <div class="metric-label">Trials per Pair</div>
+          </div>
+        </div>
+
+        <h3>Method</h3>
+        <p>Each of the 79 pairs is presented to the model in two orientations: forward (Sample A vs Sample B as originally ordered) and reverse (Sample B vs Sample A, swapped). This position-swap design tests whether the model's judgement is influenced by presentation order and provides a built-in reliability measure through position-swap scoring. Each orientation is evaluated 3 times (trials), yielding 237 total evaluations per model.</p>
+
+        <p>The benchmark also includes a standards-based grading (SG) pilot, where each work sample is presented individually for absolute classification against the achievement standard (Above Satisfactory, Satisfactory, or Below Satisfactory). The SG pilot has been run on 7 models.</p>
+
+        <h3>Scoring</h3>
+        <p>Two metrics are reported for the comparative judgement task.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Description</th>
+              <th>Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Accuracy</strong></td>
+              <td>Percentage of pairs where the model chose the correct (higher-achieving) work sample</td>
+              <td>0&ndash;100%</td>
+            </tr>
+            <tr>
+              <td><strong>Reliability</strong></td>
+              <td>Percentage of pairs where the model gave the same answer regardless of presentation order (forward vs reverse)</td>
+              <td>0&ndash;100%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>High accuracy with low reliability suggests the model is getting answers right by chance in some orientations. High reliability with low accuracy would indicate a systematic but incorrect judgement strategy. The ideal is high scores on both metrics.</p>
+
+        <h3>Excluded models</h3>
+        <p>Four models were excluded from the ACARA results due to invalid response formats (0% accuracy from inability to produce valid judgements): DeepSeek R1, Gemini 3 Pro, GPT-5.2, and GPT-5 Mini.</p>
+
+        <details>
+          <summary>Comparative judgement prompt template</summary>
+          <div class="details-content">
+            <p>Each pair is presented as a single user message with no system prompt. Template variables are filled from the ACARA work sample database.</p>
+            <pre><code>You are an expert educational assessor evaluating student work against the Australian Curriculum achievement standard for {year_level} English.
+
+### Achievement Standard
+{achievement_standard}
+
+### Task
+{task_description}
+
+Compare the following two student work samples and determine which one better demonstrates the achievement standard.
+
+### Sample A
+{sample_a}
+
+### Sample B
+{sample_b}
+
+Which sample better demonstrates the achievement standard?
+Respond with ONLY one of these two options:
+BETTER_SAMPLE: A
+or
+BETTER_SAMPLE: B</code></pre>
+          </div>
+        </details>
+
+        <details>
+          <summary>Standards-based grading prompt template</summary>
+          <div class="details-content">
+            <p>Each work sample is presented individually for absolute classification against the achievement standard.</p>
+            <pre><code>You are an experienced teacher assessing student work against the Australian
+Curriculum achievement standard.
+
+## Subject and Year Level
+{subject} — {year_level}
+
+## Achievement Standard
+{achievement_standard}
+
+## Task
+{task_description}
+
+## Student Work
+{student_work_content}
+
+## Your Task
+
+The achievement standard above describes what a student working AT the
+expected level should demonstrate. Based on the evidence in this student's
+work, classify it as:
+
+- ABOVE_SATISFACTORY: Consistently goes beyond what the standard describes.
+- SATISFACTORY: Demonstrates what the standard describes.
+- BELOW_SATISFACTORY: Does not yet demonstrate what the standard describes.
+
+Respond in exactly this format and nothing else:
+
+CLASSIFICATION: [ABOVE_SATISFACTORY / SATISFACTORY / BELOW_SATISFACTORY]
+REASONING: [one sentence]</code></pre>
+            <p>No additional instructions are provided to the model for either prompt.</p>
+          </div>
+        </details>
+
+        <!-- 2.5 Evaluation Dimensions -->
+        <h2 id="dimensions">2.5 Evaluation Dimensions</h2>
+
+        <p>Accuracy on a benchmark tells only part of the story. A model scoring 90% under controlled conditions may behave very differently in real-world deployment. AlignED evaluates multiple dimensions to reveal whether correct responses reflect stable knowledge or surface-level pattern matching. These probes are currently complete for neuromyth identification only.</p>
+
+        <h3>Temperature robustness</h3>
+        <p>Temperature controls the randomness of model outputs. Higher temperatures increase variability. We test at three settings: T=0 (deterministic, baseline performance), T=0.5 (moderate variation, practical deployment settings), and T=1.0 (high variation, stress testing knowledge stability).</p>
+
+        <p>The Knowledge Robustness Index (KRI) measures how stable performance remains as temperature increases:</p>
+
+        <div class="citation">
+          KRI = min(Accuracy_T0.5, Accuracy_T1.0) / Accuracy_T0
+        </div>
+
+        <p>A KRI of 1.0 indicates perfect robustness (no degradation). Lower values indicate that correct answers at T=0 may be fragile.</p>
+
+        <p><strong>Key finding:</strong> Most evaluated models show exceptional temperature robustness, with average accuracy variation of only 0.6% across temperature settings. Educational knowledge, once learned, appears relatively stable.</p>
+
+        <h3>Prompt sensitivity</h3>
+        <p>Does rephrasing a question change the answer? We test each item with four prompt framings: standard (neutral, direct question), interrogative (question form emphasising inquiry), embedded (presented as common belief), and adversarial (presented with apparent authority).</p>
+
+        <p>The Prompt Sensitivity Index (PSI) measures the proportion of items where different framings produce different answers:</p>
+
+        <div class="citation">
+          PSI = (Items with inconsistent responses) / (Total items)
+        </div>
+
+        <p>A PSI of 0% indicates perfect consistency. Higher values suggest the model is influenced by framing rather than content.</p>
+
+        <p><strong>Key finding:</strong> Average PSI across models is 7.1%, indicating relatively low prompt sensitivity. However, adversarial framings (presenting myths as "research-backed") do increase error rates for some models.</p>
+
+        <h3>Confidence calibration</h3>
+        <p>When models are wrong, do they know it? We assess confidence calibration using a subset of 8 high-prevalence neuromyth items, asking models to rate their confidence as "Very confident," "Somewhat confident," or "Uncertain."</p>
+
+        <p><strong>Key finding:</strong> All evaluated models show universal overconfidence. No model ever selected "Uncertain" across all confidence probes. Even when incorrect, models express "Very confident" or "Somewhat confident." This is particularly problematic for educational applications where appropriate epistemic humility is valuable.</p>
+
+        <h3>Token efficiency</h3>
+        <p>How much reasoning does a model require to reach correct answers? We measure output tokens (length of model response) and performance-to-tokens ratio (accuracy relative to reasoning length). For practical deployment, efficiency has implications for cost, latency, and user experience. Models that achieve high accuracy with efficient responses may be preferable for real-time educational applications.</p>
+
+        <details>
+          <summary>Confidence probe prompt</summary>
+          <div class="details-content">
+            <p>After the model answers each item, a follow-up message is sent to assess confidence calibration:</p>
+            <pre><code>How confident are you in this answer? Respond with only one of: "Very confident" / "Somewhat confident" / "Uncertain"</code></pre>
+            <p>This probe is applied to a subset of 8 high-prevalence neuromyth items. No additional context is provided.</p>
+          </div>
+        </details>
+
+        <!-- 2.6 Scoring and Reporting -->
+        <h2 id="scoring">2.6 Scoring and Reporting</h2>
+
+        <p>Each benchmark uses a different scoring approach, reflecting what it tests.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>Scoring Method</th>
+              <th>Scale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Neuromyth Identification</strong></td>
+              <td>Binary correct/incorrect against a validated answer key (Dekker et al., 2012)</td>
+              <td>0&ndash;100%</td>
+            </tr>
+            <tr>
+              <td><strong>Diagnostic Reasoning</strong></td>
+              <td>0&ndash;3 rubric per scenario, scored by an LLM judge (Claude 4.5 Sonnet)</td>
+              <td>0&ndash;36 (raw) or 0&ndash;100%</td>
+            </tr>
+            <tr>
+              <td><strong>General Pedagogical Knowledge (CDPK)</strong></td>
+              <td>Multiple-choice items from standardised teacher certification exams</td>
+              <td>0&ndash;100%</td>
+            </tr>
+            <tr>
+              <td><strong>Inclusive Education (SEND)</strong></td>
+              <td>Multiple-choice items from standardised teacher certification exams</td>
+              <td>0&ndash;100%</td>
+            </tr>
+            <tr>
+              <td><strong>ACARA Comparative Judgement</strong></td>
+              <td>Pairwise comparison accuracy plus test-retest reliability across presentation orders</td>
+              <td>0&ndash;100% (each metric)</td>
+            </tr>
+            <tr>
+              <td><strong>ACARA Standards-Based Grading</strong></td>
+              <td>Three-category classification (Above Satisfactory / Satisfactory / Below Satisfactory)</td>
+              <td>0&ndash;100% accuracy per category</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>Normalising these to a common scale would obscure important differences in what each score means. A 90% on neuromyth identification (binary classification of 32 items) is not comparable to a 90% on diagnostic reasoning (rubric-scored open responses judged by an LLM).</p>
+
+        <h3>Model pools</h3>
+        <p>Not all models appear in every benchmark. The model count varies because benchmarks were added at different times and some models cannot produce valid responses for certain task formats:</p>
+        <ul>
+          <li>Neuromyth Identification: 31 models</li>
+          <li>Diagnostic Reasoning: 30 models</li>
+          <li>General Pedagogical Knowledge (CDPK): 23 models</li>
+          <li>Inclusive Education (SEND): 23 models</li>
+          <li>ACARA Comparative Judgement: 12 models</li>
+          <li>ACARA Standards-Based Grading (pilot): 7 models</li>
+        </ul>
+
+        <h3>Why results are reported separately</h3>
+        <p>Performance on one benchmark does not predict performance on another. A model that scores well on pedagogical knowledge does not necessarily score well on neuromyth identification or student work judgement. For example:</p>
+        <ul>
+          <li>Gemini 2.5 Pro leads on pedagogical knowledge (88.5%) but scores 75.9% on neuromyth identification.</li>
+          <li>ACARA comparative judgement rankings do not predict performance on any knowledge benchmark.</li>
+          <li>The standards-based grading pilot produced near-chance accuracy from models that score above 80% on other tasks.</li>
+        </ul>
+
+        <p>Each evaluation is reported on its own terms. This lets users compare models on whatever capability matters most for their use case.</p>
+
+        <!-- Models evaluated -->
+        <h2 id="models">Models evaluated</h2>
+
+        <p>32 models from six providers have been tested across one or more benchmarks. Each benchmark has its own model pool (7 to 31 models).</p>
+
+        <div class="grid grid-3 mt-3">
+          <div class="card">
+            <h4>Anthropic</h4>
+            <p>Claude 3 through Claude 4.5 family, including extended thinking variants</p>
+          </div>
+          <div class="card">
+            <h4>OpenAI</h4>
+            <p>GPT-4 Turbo, GPT-4o, GPT-5 family, o3 and o4-mini</p>
+          </div>
+          <div class="card">
+            <h4>Google, Meta, DeepSeek</h4>
+            <p>Gemini 2.0&ndash;3, Llama 3.1&ndash;3.3, DeepSeek V3/R1</p>
+          </div>
+        </div>
+
+        <h3>Reproducibility</h3>
+        <p>All evaluation parameters are documented and fixed:</p>
+        <ul>
+          <li>Pinned model versions (specific API model strings)</li>
+          <li>Fixed random seeds where applicable</li>
+          <li>Standardised prompt templates (published above for each benchmark)</li>
+          <li>Documented scoring rubrics with examples</li>
+        </ul>
+
+        <p>Raw data and scoring details are available through <a href="appendices.html#data-access">Data Access</a>.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">AlignED</a>
+          <p>Benchmarking AI performance on professional teaching tasks.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="discussion.html">Discussion</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="appendices.html#data-access">Data Access</a></li>
+            <li><a href="appendices.html#citation">Citation</a></li>
+            <li><a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 AlignED. Data hosted on OSF. Last updated: February 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

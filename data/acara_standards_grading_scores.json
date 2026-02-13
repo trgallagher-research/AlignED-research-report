@@ -1,0 +1,30 @@
+{
+  "generated": "2026-02-12",
+  "version": "v1.0",
+  "description": "ACARA Standards-Based Grading (Pilot): Classify student work as Above Satisfactory, Satisfactory, or Below Satisfactory against Australian Curriculum standards",
+  "eval_name": "acara_standards_grading",
+  "eval_display": "Standards-Based Grading (Pilot)",
+  "status": "pilot",
+  "n_test_cases": 204,
+  "n_unique_tasks": 68,
+  "subjects": ["Science", "English", "Mathematics"],
+  "n_models": 7,
+  "overall_accuracy": 50.1,
+  "overall_kappa": 0.252,
+  "per_level_accuracy": {
+    "above_satisfactory": 5.5,
+    "satisfactory": 72.6,
+    "below_satisfactory": 72.3
+  },
+  "notes": "All seven models show strong central tendency bias, over-predicting Satisfactory. The ACARA achievement standards may lack sufficient specificity for absolute classification; models might perform better with more detailed criteria describing what distinguishes Above Satisfactory from Satisfactory work. A structured reasoning pilot (Condition B) made performance worse, not better.",
+  "source": "AlignED/evals/acara_standards_grading/outputs/acara_classification_scores.md",
+  "results": [
+    { "model": "Gemini 3 Flash", "provider": "Google", "overall_accuracy": 56.6, "above_sat_accuracy": 21.5, "sat_accuracy": 95.5, "below_sat_accuracy": 52.3, "kappa": 0.348, "central_tendency_bias": 39 },
+    { "model": "Claude 4.5 Sonnet", "provider": "Anthropic", "overall_accuracy": 53.4, "above_sat_accuracy": 14.7, "sat_accuracy": 66.2, "below_sat_accuracy": 79.4, "kappa": 0.301, "central_tendency_bias": 21 },
+    { "model": "DeepSeek V3.2", "provider": "DeepSeek", "overall_accuracy": 49.5, "above_sat_accuracy": 1.5, "sat_accuracy": 60.3, "below_sat_accuracy": 86.8, "kappa": 0.243, "central_tendency_bias": 16 },
+    { "model": "GPT-5", "provider": "OpenAI", "overall_accuracy": 48.5, "above_sat_accuracy": 1.5, "sat_accuracy": 79.4, "below_sat_accuracy": 64.7, "kappa": 0.228, "central_tendency_bias": 33 },
+    { "model": "o4-mini", "provider": "OpenAI", "overall_accuracy": 48.5, "above_sat_accuracy": 0.0, "sat_accuracy": 72.1, "below_sat_accuracy": 73.5, "kappa": 0.228, "central_tendency_bias": 23 },
+    { "model": "Claude 4.5 Haiku", "provider": "Anthropic", "overall_accuracy": 47.5, "above_sat_accuracy": 0.0, "sat_accuracy": 69.1, "below_sat_accuracy": 73.5, "kappa": 0.213, "central_tendency_bias": 23 },
+    { "model": "GPT-5.2", "provider": "OpenAI", "overall_accuracy": 47.1, "above_sat_accuracy": 0.0, "sat_accuracy": 66.2, "below_sat_accuracy": 75.0, "kappa": 0.206, "central_tendency_bias": 20 }
+  ]
+}

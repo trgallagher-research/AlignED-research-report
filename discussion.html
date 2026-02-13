@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discussion - AlignED</title>
+  <meta name="description" content="Five takeaways from the AlignED benchmark data, limitations of the study, what we claim and what we do not, and future research directions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="discussion">
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AlignED</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <a href="index.html">Abstract</a>
+        <a href="introduction.html">1. Introduction</a>
+        <a href="methods.html">2. Methods</a>
+        <a href="results.html">3. Results</a>
+        <a href="discussion.html" class="active">4. Discussion</a>
+        <a href="appendices.html">Appendices</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1>Discussion</h1>
+        <p class="subtitle">Five takeaways, limitations, and future directions</p>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="prose">
+
+          <h2>Five takeaways from the data</h2>
+
+          <p>Five evaluations across 32 models produce a large volume of results. Rather than summarise every finding, we draw out five observations that cut across the individual benchmarks and carry implications for how AI is adopted in education.</p>
+
+          <h3>4.1 Frontier models are improving but not yet reliably aligned</h3>
+
+          <p>Top models score above 90% on classification tasks such as neuromyth identification and pedagogical knowledge items. Applied judgement is a different story. Standards-based grading accuracy averages 50% across all models tested. Performance is uneven across task types within the same model. A model can identify neuromyths with 93% accuracy and still fail to distinguish excellent student work from adequate student work. Classification and judgement are different capabilities, and current models are far stronger at the first than the second.</p>
+
+          <h3>4.2 Dramatic generational improvement</h3>
+
+          <p>The gap between older and newer models is large and growing. Claude 3 Haiku, released in March 2024, scores 54.8% on teacher certification knowledge. Claude 4.5 Opus, released in November 2025, scores 88.1%. That is a 33-point improvement in 20 months from the same provider. Similar generational gaps appear across all benchmarks and all providers. The practical consequence is straightforward: your experience with AI from six months ago may already be outdated. Evaluations that do not track model versions and release dates risk drawing conclusions from capabilities that no longer represent the current state of the technology.</p>
+
+          <h3>4.3 No single best model</h3>
+
+          <p>Rankings shift across evaluations. Gemini 2.5 Pro leads on pedagogical knowledge but scores below several smaller models on neuromyth identification. ACARA comparative judgement rankings do not correlate with knowledge benchmarks. No model ranks first on all five evaluations. Any claim that "Model X is the best for education" is incomplete without specifying which educational task. This finding is consistent across every analysis we have run. It is the single most important result for anyone selecting a model for educational use.</p>
+
+          <h3>4.4 Assessment task type matters enormously</h3>
+
+          <p>Models perform well on classification tasks (is this statement true or false?) and poorly on absolute grading (does this student work meet the standard?). This is not simply a matter of difficulty. Classification provides clear decision boundaries. A neuromyth is either supported by evidence or it is not. Standards-based grading requires interpreting vague criteria and making fine-grained distinctions between adjacent performance levels. The ACARA achievement standards may lack sufficient specificity for reliable absolute classification by either humans or models. When we asked models to reason step-by-step before classifying, performance got worse, not better. The bottleneck appears to be in the criteria, not in the reasoning process.</p>
+
+          <h3>4.5 We urgently need more educational evaluations</h3>
+
+          <p>Five evaluations covering neuromyth identification, diagnostic reasoning, teacher certification knowledge, and student work judgement are a start. They are not enough. These benchmarks do not cover lesson planning quality, pastoral and wellbeing support, feedback generation, curriculum adaptation, or dozens of other tasks teachers perform daily. The field needs more benchmarks, from more research groups, covering more tasks, in more cultural and curricular contexts. AlignED contributes five. The field needs fifty.</p>
+
+          <h2>Limitations</h2>
+
+          <p>Every study has limitations. We state ours directly.</p>
+
+          <p><strong>Training data contamination.</strong> Some benchmark items, particularly the 32 neuromyths from Dekker et al. (2012), have been published for over a decade and may appear in model training data. High scores on these items may partly reflect memorisation rather than genuine reasoning about the underlying science. We cannot rule this out for any model, and it affects interpretation of the neuromyth results most directly.</p>
+
+          <p><strong>LLM-as-judge scoring.</strong> Diagnostic reasoning responses are scored by Claude 4.5 Sonnet acting as an automated judge. This introduces potential judge model bias. We validated a sample of judgements manually and found high agreement, but systematic bias remains possible. The judge model may favour response styles similar to its own outputs.</p>
+
+          <p><strong>Cultural specificity.</strong> The 1,143 pedagogical knowledge items come from Chilean teacher certification exams. Pedagogical principles are broadly universal, but some items may reflect Chilean educational policy, curricular structure, or cultural context. Performance differences across models could partly reflect differential exposure to Chilean educational content in training data rather than differences in pedagogical reasoning ability.</p>
+
+          <p><strong>Varying sample sizes.</strong> Benchmarks range from 32 items (neuromyths) to 1,143 items (teacher certification knowledge). Statistical power differs accordingly. A three-point difference on a 32-item test carries less evidential weight than a three-point difference on a 1,143-item test. We report confidence intervals where appropriate, but readers should weight findings by sample size.</p>
+
+          <p><strong>Incomplete validation.</strong> We defined three validation tiers for each benchmark: internal consistency, external validation against human performance, and predictive validity for downstream educational outcomes. Not all tiers are complete for all benchmarks. The results presented here should be interpreted as provisional pending full validation.</p>
+
+          <h2>What we claim and what we do not</h2>
+
+          <p>AlignED measures how well AI models perform on specific benchmark tasks related to professional teaching. It does not measure whether a model is a good tutor, can teach effectively, or is safe to deploy in a classroom.</p>
+
+          <p>A high score means the model answered benchmark items correctly. It does not mean the model can apply that knowledge in a real classroom with real students, real time pressure, and real consequences. Knowing that a learning-styles approach lacks evidence is not the same as redirecting a colleague who uses it. Scoring well on a teacher certification exam is not the same as teaching well.</p>
+
+          <p>These benchmarks are a starting point, not a finish line.</p>
+
+          <div class="note">
+            <p>A model that cannot identify common neuromyths or diagnose basic implementation failures may be a poor fit for educational applications. But a model that performs well on these benchmarks still needs to be evaluated for safety, bias, and pedagogical effectiveness before deployment.</p>
+          </div>
+
+          <h2>Future directions</h2>
+
+          <p>These are research directions, not commitments to specific timelines.</p>
+
+          <ul>
+            <li><strong>Tracking model capabilities over time.</strong> As models improve and costs decrease, repeated evaluation of the same benchmarks will reveal whether gains are broad or concentrated in specific task types.</li>
+            <li><strong>New benchmark modules.</strong> Lesson planning quality, unit design, and wellbeing and pastoral support are high-priority additions. Each requires its own item development, scoring rubric, and validation process.</li>
+            <li><strong>Human validation studies.</strong> Comparing model performance to teacher panels on the same tasks will establish whether benchmark scores are meaningful indicators of practical capability.</li>
+            <li><strong>Cross-cultural expansion.</strong> Extending pedagogical knowledge items beyond the Chilean context to include teacher certification content from other countries and educational traditions.</li>
+            <li><strong>Completing all three validation tiers.</strong> Internal consistency, external validation, and predictive validity for each benchmark. Until all three are complete, results remain provisional.</li>
+          </ul>
+
+          <h2>Closing</h2>
+
+          <p>AI models are already being used for educational tasks. Teachers are adopting them. Students are using them. Policymakers are making decisions about them. The question is not whether AI will play a role in education. It already does. The question is whether we will measure what these tools can and cannot do before we build systems around them.</p>
+
+          <p>AlignED is one contribution to that measurement. Five evaluations, 32 models, a set of findings that are already being overtaken by the next generation of releases. The work is to keep measuring, keep publishing, and keep being honest about what the data show and what they do not.</p>
+
+          <p>This is not something that will happen to us. It is a choice we get to make.</p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">AlignED</a>
+          <p>Benchmarking AI performance on professional teaching tasks.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="discussion.html">Discussion</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="appendices.html#data-access">Data Access</a></li>
+            <li><a href="appendices.html#citation">Citation</a></li>
+            <li><a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 AlignED. Data hosted on OSF. Last updated: February 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

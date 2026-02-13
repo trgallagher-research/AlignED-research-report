@@ -1,0 +1,267 @@
+{
+  "generated": "2026-02-12",
+  "description": "Model release dates and API pricing for AlignED benchmark models",
+  "notes": {
+    "pricing": "USD per million tokens, as of February 2026. Thinking models bill reasoning tokens at output rate.",
+    "token_counts": "Survey (32 items) + Scenarios (12 items) only. Does not include pedagogy (1,143 items) or ACARA (237 evaluations).",
+    "llama_pricing": "Open-source model; pricing varies by provider. Shown: OpenRouter rates."
+  },
+  "models": [
+    {
+      "model": "GPT-5",
+      "provider": "OpenAI",
+      "release_date": "2025-08",
+      "cost_per_m_input": 1.25,
+      "cost_per_m_output": 10.00,
+      "survey_scenario_tokens": 16840
+    },
+    {
+      "model": "GPT-5 Mini",
+      "provider": "OpenAI",
+      "release_date": "2025-08",
+      "cost_per_m_input": 0.25,
+      "cost_per_m_output": 2.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "GPT-5.2",
+      "provider": "OpenAI",
+      "release_date": "2025-12",
+      "cost_per_m_input": 1.75,
+      "cost_per_m_output": 14.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "o3",
+      "provider": "OpenAI",
+      "release_date": "2025-04",
+      "cost_per_m_input": 2.00,
+      "cost_per_m_output": 8.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "o3-mini",
+      "provider": "OpenAI",
+      "release_date": "2025-01",
+      "cost_per_m_input": 1.10,
+      "cost_per_m_output": 4.40,
+      "survey_scenario_tokens": 13492
+    },
+    {
+      "model": "o4-mini",
+      "provider": "OpenAI",
+      "release_date": "2025-04",
+      "cost_per_m_input": 1.10,
+      "cost_per_m_output": 4.40,
+      "survey_scenario_tokens": 13425
+    },
+    {
+      "model": "GPT-4o",
+      "provider": "OpenAI",
+      "release_date": "2024-05",
+      "cost_per_m_input": 2.50,
+      "cost_per_m_output": 10.00,
+      "survey_scenario_tokens": 5505
+    },
+    {
+      "model": "GPT-4o Mini",
+      "provider": "OpenAI",
+      "release_date": "2024-07",
+      "cost_per_m_input": 0.15,
+      "cost_per_m_output": 0.60,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "GPT-4 Turbo",
+      "provider": "OpenAI",
+      "release_date": "2023-11",
+      "cost_per_m_input": 10.00,
+      "cost_per_m_output": 30.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Claude 4.5 Opus (Thinking)",
+      "provider": "Anthropic",
+      "release_date": "2025-11",
+      "cost_per_m_input": 5.00,
+      "cost_per_m_output": 25.00,
+      "survey_scenario_tokens": 20446
+    },
+    {
+      "model": "Claude 4.5 Opus",
+      "provider": "Anthropic",
+      "release_date": "2025-11",
+      "cost_per_m_input": 5.00,
+      "cost_per_m_output": 25.00,
+      "survey_scenario_tokens": 6515
+    },
+    {
+      "model": "Claude 4.5 Sonnet (Thinking)",
+      "provider": "Anthropic",
+      "release_date": "2025-09",
+      "cost_per_m_input": 3.00,
+      "cost_per_m_output": 15.00,
+      "survey_scenario_tokens": 17481
+    },
+    {
+      "model": "Claude 4.5 Sonnet",
+      "provider": "Anthropic",
+      "release_date": "2025-09",
+      "cost_per_m_input": 3.00,
+      "cost_per_m_output": 15.00,
+      "survey_scenario_tokens": 6393
+    },
+    {
+      "model": "Claude 4.5 Haiku",
+      "provider": "Anthropic",
+      "release_date": "2025-10",
+      "cost_per_m_input": 1.00,
+      "cost_per_m_output": 5.00,
+      "survey_scenario_tokens": 6824
+    },
+    {
+      "model": "Claude 4.1 Opus",
+      "provider": "Anthropic",
+      "release_date": "2025-08",
+      "cost_per_m_input": 15.00,
+      "cost_per_m_output": 75.00,
+      "survey_scenario_tokens": 6411
+    },
+    {
+      "model": "Claude 4 Opus",
+      "provider": "Anthropic",
+      "release_date": "2025-05",
+      "cost_per_m_input": 15.00,
+      "cost_per_m_output": 75.00,
+      "survey_scenario_tokens": 6199
+    },
+    {
+      "model": "Claude 4 Sonnet",
+      "provider": "Anthropic",
+      "release_date": "2025-05",
+      "cost_per_m_input": 3.00,
+      "cost_per_m_output": 15.00,
+      "survey_scenario_tokens": 6321
+    },
+    {
+      "model": "Claude 3.7 Sonnet",
+      "provider": "Anthropic",
+      "release_date": "2025-02",
+      "cost_per_m_input": 3.00,
+      "cost_per_m_output": 15.00,
+      "survey_scenario_tokens": 6422
+    },
+    {
+      "model": "Claude 3.5 Sonnet",
+      "provider": "Anthropic",
+      "release_date": "2024-06",
+      "cost_per_m_input": 3.00,
+      "cost_per_m_output": 15.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Claude 3.5 Haiku",
+      "provider": "Anthropic",
+      "release_date": "2024-11",
+      "cost_per_m_input": 0.80,
+      "cost_per_m_output": 4.00,
+      "survey_scenario_tokens": 6505
+    },
+    {
+      "model": "Claude 3 Opus",
+      "provider": "Anthropic",
+      "release_date": "2024-03",
+      "cost_per_m_input": 15.00,
+      "cost_per_m_output": 75.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Claude 3 Haiku",
+      "provider": "Anthropic",
+      "release_date": "2024-03",
+      "cost_per_m_input": 0.25,
+      "cost_per_m_output": 1.25,
+      "survey_scenario_tokens": 6708
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "release_date": "2025-03",
+      "cost_per_m_input": 1.25,
+      "cost_per_m_output": 10.00,
+      "survey_scenario_tokens": 38069
+    },
+    {
+      "model": "Gemini 3 Flash",
+      "provider": "Google",
+      "release_date": "2025-12",
+      "cost_per_m_input": 0.50,
+      "cost_per_m_output": 3.00,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Gemini 2.5 Flash",
+      "provider": "Google",
+      "release_date": "2025-05",
+      "cost_per_m_input": 0.15,
+      "cost_per_m_output": 0.60,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "provider": "Google",
+      "release_date": "2025-02",
+      "cost_per_m_input": 0.10,
+      "cost_per_m_output": 0.40,
+      "survey_scenario_tokens": 5332
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "provider": "Meta",
+      "release_date": "2024-12",
+      "cost_per_m_input": 0.10,
+      "cost_per_m_output": 0.32,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Llama 3.1 405B",
+      "provider": "Meta",
+      "release_date": "2024-07",
+      "cost_per_m_input": 0.80,
+      "cost_per_m_output": 0.80,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "Llama 3.1 70B",
+      "provider": "Meta",
+      "release_date": "2024-07",
+      "cost_per_m_input": 0.10,
+      "cost_per_m_output": 0.32,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "DeepSeek V3",
+      "provider": "DeepSeek",
+      "release_date": "2024-12",
+      "cost_per_m_input": 0.14,
+      "cost_per_m_output": 0.28,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "DeepSeek R1",
+      "provider": "DeepSeek",
+      "release_date": "2025-01",
+      "cost_per_m_input": 0.55,
+      "cost_per_m_output": 2.19,
+      "survey_scenario_tokens": null
+    },
+    {
+      "model": "DeepSeek V3.2",
+      "provider": "DeepSeek",
+      "release_date": "2025-12",
+      "cost_per_m_input": 0.25,
+      "cost_per_m_output": 0.38,
+      "survey_scenario_tokens": null
+    }
+  ]
+}

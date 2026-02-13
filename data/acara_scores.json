@@ -1,0 +1,81 @@
+{
+  "generated": "2026-02-06",
+  "version": "v2",
+  "description": "ACARA Comparative Judgement — 12 models with valid responses on 79 verified pairs",
+  "method": "Each pair presented in forward (A vs B) and reverse (B vs A) orientations across 3 trials",
+  "total_evals_per_model": 237,
+  "results": [
+    {
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "accuracy": 86.5,
+      "reliability": 84.8
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "provider": "Meta",
+      "accuracy": 86.5,
+      "reliability": 81.0
+    },
+    {
+      "model": "Claude 4.5 Haiku",
+      "provider": "Anthropic",
+      "accuracy": 85.2,
+      "reliability": 83.5
+    },
+    {
+      "model": "o3",
+      "provider": "OpenAI",
+      "accuracy": 84.8,
+      "reliability": 92.0
+    },
+    {
+      "model": "o4-mini",
+      "provider": "OpenAI",
+      "accuracy": 84.8,
+      "reliability": 82.3
+    },
+    {
+      "model": "Claude 4 Sonnet",
+      "provider": "Anthropic",
+      "accuracy": 83.5,
+      "reliability": 92.0
+    },
+    {
+      "model": "GPT-5",
+      "provider": "OpenAI",
+      "accuracy": 83.5,
+      "reliability": 94.1
+    },
+    {
+      "model": "Claude 4.5 Opus",
+      "provider": "Anthropic",
+      "accuracy": 82.7,
+      "reliability": 92.8
+    },
+    {
+      "model": "Gemini 3 Flash",
+      "provider": "Google",
+      "accuracy": 81.0,
+      "reliability": 68.8
+    },
+    {
+      "model": "Gemini 2.0 Flash",
+      "provider": "Google",
+      "accuracy": 79.7,
+      "reliability": 84.8
+    },
+    {
+      "model": "DeepSeek V3.2",
+      "provider": "DeepSeek",
+      "accuracy": 72.6,
+      "reliability": 87.8
+    },
+    {
+      "model": "Claude 4.5 Sonnet",
+      "provider": "Anthropic",
+      "accuracy": 66.2,
+      "reliability": 72.2
+    }
+  ]
+}

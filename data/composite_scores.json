@@ -1,0 +1,224 @@
+{
+  "generated": "2026-02-06",
+  "version": "v2.1",
+  "description": "AlignED v2 composite scores — Educational Alignment Index (EAI): educational neuroscience (25%) + classroom reasoning (25%) + pedagogical knowledge (50%)",
+  "scoring": {
+    "composite": "Educational Neuroscience (25%) + Scenarios (25%) + Pedagogy (50%) — 21 models with three knowledge benchmarks",
+    "neuromyths": "32 Dekker et al. (2012) items, binary correct/incorrect",
+    "scenarios": "12 pedagogical vignettes, 0-3 LLM-judge scored, max 36",
+    "pedagogy": "1,143 Chilean teacher cert items (920 CDPK + 223 SEND)",
+    "acara": "79 verified pairs of Australian student work, accuracy percentage"
+  },
+  "results": [
+    {
+      "model": "GPT-5",
+      "provider": "OpenAI",
+      "neuromyths_pct": 92.9,
+      "scenarios_pct": 100.0,
+      "pedagogy_pct": 86.9,
+      "pedagogy_cdpk": 88.0,
+      "pedagogy_send": 82.1,
+      "composite": 91.7
+    },
+    {
+      "model": "Claude 4.5 Opus (Thinking)",
+      "provider": "Anthropic",
+      "neuromyths_pct": 92.9,
+      "scenarios_pct": 97.2,
+      "pedagogy_pct": 87.5,
+      "pedagogy_cdpk": 88.5,
+      "pedagogy_send": 83.4,
+      "composite": 91.3
+    },
+    {
+      "model": "o3",
+      "provider": "OpenAI",
+      "neuromyths_pct": 90.9,
+      "scenarios_pct": 100.0,
+      "pedagogy_pct": 86.1,
+      "pedagogy_cdpk": 86.5,
+      "pedagogy_send": 84.3,
+      "composite": 90.8
+    },
+    {
+      "model": "Claude 4.5 Opus",
+      "provider": "Anthropic",
+      "neuromyths_pct": 85.7,
+      "scenarios_pct": 97.2,
+      "pedagogy_pct": 88.1,
+      "pedagogy_cdpk": 88.7,
+      "pedagogy_send": 85.7,
+      "composite": 89.8
+    },
+    {
+      "model": "Claude 4 Opus",
+      "provider": "Anthropic",
+      "neuromyths_pct": 85.7,
+      "scenarios_pct": 97.2,
+      "pedagogy_pct": 85.8,
+      "pedagogy_cdpk": 86.2,
+      "pedagogy_send": 84.3,
+      "composite": 88.6
+    },
+    {
+      "model": "Claude 4.1 Opus",
+      "provider": "Anthropic",
+      "neuromyths_pct": 89.3,
+      "scenarios_pct": 97.2,
+      "pedagogy_pct": 84.0,
+      "pedagogy_cdpk": 83.8,
+      "pedagogy_send": 84.8,
+      "composite": 88.6
+    },
+    {
+      "model": "Claude 4.5 Sonnet (Thinking)",
+      "provider": "Anthropic",
+      "neuromyths_pct": 82.1,
+      "scenarios_pct": 94.4,
+      "pedagogy_pct": 86.4,
+      "pedagogy_cdpk": 86.6,
+      "pedagogy_send": 85.7,
+      "composite": 87.3
+    },
+    {
+      "model": "GPT-5 Mini",
+      "provider": "OpenAI",
+      "neuromyths_pct": 81.8,
+      "scenarios_pct": 94.4,
+      "pedagogy_pct": 82.8,
+      "pedagogy_cdpk": 83.3,
+      "pedagogy_send": 80.7,
+      "composite": 85.5
+    },
+    {
+      "model": "Claude 4.5 Sonnet",
+      "provider": "Anthropic",
+      "neuromyths_pct": 78.6,
+      "scenarios_pct": 94.4,
+      "pedagogy_pct": 83.7,
+      "pedagogy_cdpk": 84.6,
+      "pedagogy_send": 80.3,
+      "composite": 85.1
+    },
+    {
+      "model": "GPT-5.2",
+      "provider": "OpenAI",
+      "neuromyths_pct": 81.8,
+      "scenarios_pct": 86.1,
+      "pedagogy_pct": 84.8,
+      "pedagogy_cdpk": 85.4,
+      "pedagogy_send": 82.1,
+      "composite": 84.4
+    },
+    {
+      "model": "o4-mini",
+      "provider": "OpenAI",
+      "neuromyths_pct": 85.7,
+      "scenarios_pct": 83.3,
+      "pedagogy_pct": 83.2,
+      "pedagogy_cdpk": 83.7,
+      "pedagogy_send": 81.2,
+      "composite": 83.9
+    },
+    {
+      "model": "Claude 3.7 Sonnet",
+      "provider": "Anthropic",
+      "neuromyths_pct": 89.3,
+      "scenarios_pct": 86.1,
+      "pedagogy_pct": 79.3,
+      "pedagogy_cdpk": 79.7,
+      "pedagogy_send": 77.6,
+      "composite": 83.5
+    },
+    {
+      "model": "Claude 4 Sonnet",
+      "provider": "Anthropic",
+      "neuromyths_pct": 78.6,
+      "scenarios_pct": 97.2,
+      "pedagogy_pct": 78.8,
+      "pedagogy_cdpk": 78.7,
+      "pedagogy_send": 79.4,
+      "composite": 83.4
+    },
+    {
+      "model": "Gemini 2.5 Pro",
+      "provider": "Google",
+      "neuromyths_pct": 75.9,
+      "scenarios_pct": 69.4,
+      "pedagogy_pct": 88.5,
+      "pedagogy_cdpk": 89.3,
+      "pedagogy_send": 85.2,
+      "composite": 80.6
+    },
+    {
+      "model": "Claude 4.5 Haiku",
+      "provider": "Anthropic",
+      "neuromyths_pct": 71.4,
+      "scenarios_pct": 86.1,
+      "pedagogy_pct": 76.3,
+      "pedagogy_cdpk": 76.8,
+      "pedagogy_send": 74.0,
+      "composite": 77.5
+    },
+    {
+      "model": "o3-mini",
+      "provider": "OpenAI",
+      "neuromyths_pct": 82.1,
+      "scenarios_pct": 58.3,
+      "pedagogy_pct": 78.7,
+      "pedagogy_cdpk": 79.6,
+      "pedagogy_send": 74.9,
+      "composite": 74.5
+    },
+    {
+      "model": "GPT-4o",
+      "provider": "OpenAI",
+      "neuromyths_pct": 75.0,
+      "scenarios_pct": 61.1,
+      "pedagogy_pct": 78.3,
+      "pedagogy_cdpk": 79.0,
+      "pedagogy_send": 75.3,
+      "composite": 73.2
+    },
+    {
+      "model": "GPT-4 Turbo",
+      "provider": "OpenAI",
+      "neuromyths_pct": 72.7,
+      "scenarios_pct": 72.2,
+      "pedagogy_pct": 73.8,
+      "pedagogy_cdpk": 75.5,
+      "pedagogy_send": 66.4,
+      "composite": 73.1
+    },
+    {
+      "model": "Claude 3.5 Haiku",
+      "provider": "Anthropic",
+      "neuromyths_pct": 67.9,
+      "scenarios_pct": 80.6,
+      "pedagogy_pct": 67.6,
+      "pedagogy_cdpk": 67.2,
+      "pedagogy_send": 69.5,
+      "composite": 70.9
+    },
+    {
+      "model": "GPT-4o Mini",
+      "provider": "OpenAI",
+      "neuromyths_pct": 54.5,
+      "scenarios_pct": 55.6,
+      "pedagogy_pct": 69.3,
+      "pedagogy_cdpk": 69.2,
+      "pedagogy_send": 69.5,
+      "composite": 62.2
+    },
+    {
+      "model": "Claude 3 Haiku",
+      "provider": "Anthropic",
+      "neuromyths_pct": 67.9,
+      "scenarios_pct": 63.9,
+      "pedagogy_pct": 54.8,
+      "pedagogy_cdpk": 54.1,
+      "pedagogy_send": 57.4,
+      "composite": 60.3
+    }
+  ]
+}

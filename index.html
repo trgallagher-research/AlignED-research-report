@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlignED — Benchmarking AI Models on Professional Teaching Tasks</title>
+  <meta name="description" content="AlignED benchmarks AI models on professional teaching tasks: neuromyth identification, diagnostic reasoning, teacher certification knowledge, and student work judgement. Five evaluations, up to 32 models.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="abstract">
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AlignED</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <a href="index.html" class="active">Abstract</a>
+        <a href="introduction.html">1. Introduction</a>
+        <a href="methods.html">2. Methods</a>
+        <a href="results.html">3. Results</a>
+        <a href="discussion.html">4. Discussion</a>
+        <a href="appendices.html">Appendices</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Title Block -->
+    <div class="cover-title">
+      <h1>AlignED: Benchmarking AI Models on Professional Teaching Tasks</h1>
+      <p class="authors">AlignED Benchmark Project</p>
+      <p class="date">February 2026 &middot; Living document</p>
+    </div>
+
+    <!-- Abstract -->
+    <div class="container">
+      <div class="abstract">
+        <h2>Abstract</h2>
+        <p>Teachers are adopting generative AI faster than any previous educational technology. OECD TALIS 2024 data shows 41% of lower secondary teachers across participating countries have used AI for professional tasks. Yet there is a shortage of evaluations that test models on the educational tasks they are currently being used for: identifying misconceptions about learning, diagnosing why teaching strategies fail, answering the kinds of questions that appear on teacher certification exams, and comparing student work against curriculum standards.</p>
+        <p>AlignED addresses this gap with five evaluations spanning neuromyth identification, diagnostic reasoning, teacher certification knowledge (general pedagogy and inclusive education), and student work judgement. Up to 32 models from six providers have been tested. Key findings: no single model ranks first across all evaluations; performance on one benchmark does not predict performance on another; assessment task type matters enormously, with models performing well on classification tasks but poorly on absolute grading; and all models exhibit universal overconfidence, never expressing uncertainty even when wrong.</p>
+        <p>This site is a living document. Benchmarks, model pools, and results are updated as new evaluations are completed.</p>
+      </div>
+    </div>
+
+    <!-- Key Findings at a Glance -->
+    <section>
+      <div class="container">
+        <h2 style="text-align: center; border-top: none; padding-top: 0; margin-top: 0;">Key findings at a glance</h2>
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-value">32</div>
+            <div class="metric-label">Models tested</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">5</div>
+            <div class="metric-label">Evaluations</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">0</div>
+            <div class="metric-label">Models ranked first on all evals</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">50%</div>
+            <div class="metric-label">Grading accuracy (standards-based)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">0%</div>
+            <div class="metric-label">Models that ever expressed uncertainty</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reading Guide -->
+    <section>
+      <div class="container">
+        <div class="reading-guide">
+          <h3>Reading guide</h3>
+          <p>This site is structured like an academic paper. The Introduction frames the problem and reviews related work. Methods describes all five evaluations and their scoring. Results presents findings with charts and stories from the data. The Discussion draws out five takeaways, states limitations, and outlines future work. Appendices contain full item lists, data access, and citation information.</p>
+        </div>
+
+        <!-- Navigation Cards -->
+        <div class="nav-cards">
+          <a href="introduction.html" class="nav-card">
+            <h3>1. Introduction</h3>
+            <p>Why educational AI evaluation matters, what related work exists, and the gap AlignED addresses.</p>
+          </a>
+          <a href="methods.html" class="nav-card">
+            <h3>2. Methods</h3>
+            <p>Five evaluations: how each is constructed, administered, scored, and validated.</p>
+          </a>
+          <a href="results.html" class="nav-card">
+            <h3>3. Results</h3>
+            <p>Per-evaluation results with charts, key observations, and stories from the data.</p>
+          </a>
+          <a href="discussion.html" class="nav-card">
+            <h3>4. Discussion</h3>
+            <p>Five takeaways, limitations, what we claim and what we do not, and future directions.</p>
+          </a>
+          <a href="appendices.html" class="nav-card">
+            <h3>Appendices</h3>
+            <p>Full benchmark items, data access, citation, revision history, and contact.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">AlignED</a>
+          <p>Benchmarking AI performance on professional teaching tasks.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="discussion.html">Discussion</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="appendices.html#data-access">Data Access</a></li>
+            <li><a href="appendices.html#citation">Citation</a></li>
+            <li><a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 AlignED. Data hosted on OSF. Last updated: February 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

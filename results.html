@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Results — AlignED</title>
+  <meta name="description" content="Benchmark results for AI models across five evaluations of professional teaching knowledge: neuromyth identification, diagnostic reasoning, teacher certification knowledge, and student work judgement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="results">
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AlignED</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav>
+        <a href="index.html">Abstract</a>
+        <a href="introduction.html">1. Introduction</a>
+        <a href="methods.html">2. Methods</a>
+        <a href="results.html" class="active">3. Results</a>
+        <a href="discussion.html">4. Discussion</a>
+        <a href="appendices.html">Appendices</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="container">
+        <h1>Results</h1>
+        <p class="subtitle">Per-evaluation results with charts, key observations, and stories from the data</p>
+      </div>
+    </div>
+
+    <section class="content-section">
+      <div class="container-wide">
+
+        <!-- Overview -->
+        <p>Five evaluations, each with its own model pool and scoring method. Results are reported separately because performance on one evaluation does not predict performance on another. Current data: February 2026.</p>
+
+        <!-- Jump Links -->
+        <div class="jump-links">
+          <h3>On this page</h3>
+          <ul>
+            <li><a href="#neuromyths">3.1 Neuromyth Identification</a></li>
+            <li><a href="#diagnostic-reasoning">3.2 Diagnostic Reasoning</a></li>
+            <li><a href="#teacher-certification">3.3 Teacher Certification Knowledge</a></li>
+            <li><a href="#student-work">3.4 Student Work Judgement</a></li>
+            <li><a href="#cost-efficiency">3.5 Cost and Efficiency</a></li>
+            <li><a href="#cross-evaluation">Cross-evaluation patterns</a></li>
+          </ul>
+        </div>
+
+        <!-- Provider Legend (once at top) -->
+        <div class="provider-legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #D97757;"></div> Anthropic
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #10A37F;"></div> OpenAI
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #4285F4;"></div> Google
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #0668E1;"></div> Meta
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #536DFE;"></div> DeepSeek
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background: #F97316;"></div> Mistral
+          </div>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 3.1 NEUROMYTH IDENTIFICATION                 -->
+        <!-- ============================================ -->
+        <h2 id="neuromyths" style="border-top: none; padding-top: 0;">3.1 Neuromyth Identification</h2>
+
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Neuromyth Identification Accuracy</h3>
+            <p class="chart-subtitle">31 models tested on 32 items. Human teacher baseline: ~50%. <a href="methods.html#neuromyths">Methodology</a></p>
+          </div>
+          <div class="chart-container">
+            <canvas id="neuromythsChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Gemini 3 Flash leads at 93.8%, followed by Claude 4.5 Opus (Thinking) and GPT-5 tied at 92.9%.</li>
+              <li>All 31 models scored above the ~50% human teacher baseline, with even the lowest (GPT-4o Mini) reaching 65.6%.</li>
+              <li>Most models answered 28 of 32 items; five models were run on the full 32-item survey with the v2 corrected answer key.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Story: Q21 contested item -->
+        <div class="note">
+          <p><strong>Q21: A contested item that highlights benchmark limitations.</strong> "Environments that are rich in stimulus improve the brains of pre-school children" is classified as a neuromyth in the Dekker et al. (2012) instrument because the original finding was in rats raised in deprived conditions, and the broad claim for human children is not well-supported by the evidence. However, this classification is debatable. The ambiguity in both "enrichment" and the assumed baseline makes a well-informed "True" response reasonably defensible.</p>
+          <p>Every model tested answered this item incorrectly (endorsing it as true) with high confidence. We retain this item because it is part of the established instrument and because it illustrates an important point: some items in neuromyth instruments have genuine ambiguity that benchmark designers should acknowledge.</p>
+        </div>
+
+        <!-- Story: Q15 vs Q27 learning styles trap -->
+        <div class="note">
+          <p><strong>Q15 vs Q27: The learning styles trap.</strong> Q15 ("Individuals learn better when they receive information in their preferred learning style") is false. It is the most widely-believed myth in education. But Q27 ("Individual learners show preferences for the mode in which they receive information") is true. People do have preferences; those preferences just do not improve learning outcomes. Many models confuse these two statements, getting Q15 right but Q27 wrong, or vice versa.</p>
+        </div>
+
+        <!-- Confidence probe finding -->
+        <div class="note">
+          <p><strong>Universal overconfidence.</strong> Eight high-prevalence myths receive a follow-up confidence probe after the model answers. Every model tested selected "Very Confident" or "Somewhat Confident" on every item. No model ever expressed uncertainty, even when answering incorrectly. This is a consistent finding across all models and items.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 3.2 DIAGNOSTIC REASONING                     -->
+        <!-- ============================================ -->
+        <h2 id="diagnostic-reasoning">3.2 Diagnostic Reasoning</h2>
+
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Diagnostic Reasoning Accuracy</h3>
+            <p class="chart-subtitle">30 models tested on 12 scenarios, scored 0&ndash;3 by LLM judge. <a href="methods.html#diagnostic-reasoning">Methodology</a></p>
+          </div>
+          <div class="chart-container">
+            <canvas id="scenariosChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Three models achieved perfect scores (36/36): Claude 4.5 Sonnet, GPT-5, and GPT-5.2.</li>
+              <li>Scores ranged from 100% down to 61.1% (GPT-4o Mini), making this the most discriminating benchmark.</li>
+              <li>Most frontier models scored 94% or above (34+/36), suggesting diagnostic reasoning is relatively strong at the top end.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Story: S01 example -->
+        <div class="note">
+          <p><strong>Example: S01 (Retrieval Practice).</strong> A Year 8 science teacher quizzes students on new material before teaching it and provides no feedback after revealing answers. The teacher concludes "retrieval practice doesn't work for science." The correct diagnosis: testing before encoding violates the retrieval-must-follow-encoding sequence, and skipping feedback eliminates the error correction mechanism. Frontier models identify both issues. Smaller models tend to give generic advice ("try different strategies") without pinpointing the specific implementation errors.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 3.3 TEACHER CERTIFICATION KNOWLEDGE          -->
+        <!-- ============================================ -->
+        <div class="section-divider" id="teacher-certification">
+          <h2>3.3 Teacher Certification Knowledge</h2>
+          <p>1,143 items from Chilean teacher certification exams. 23 models tested. <a href="methods.html#teacher-certification">Methodology</a></p>
+        </div>
+
+        <!-- CDPK -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">General Pedagogical Knowledge (CDPK)</h3>
+            <p class="chart-subtitle">920 items, cross-domain pedagogical knowledge. 23 models tested.</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="cdpkChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Gemini 2.5 Pro leads at 89.3%, the highest pedagogical knowledge score of any model tested.</li>
+              <li>Claude 4.5 Opus is close behind at 88.7%, and several models cluster above 83%.</li>
+              <li>The gap between top and bottom is narrower here than on other benchmarks, suggesting general pedagogical knowledge is more evenly distributed across models.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SEND -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Inclusive Education (SEND)</h3>
+            <p class="chart-subtitle">223 items, special education needs and disability. 23 models tested.</p>
+          </div>
+          <div class="chart-container">
+            <canvas id="sendChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Claude 4.5 Opus and Claude 4.5 Sonnet (Thinking) share the lead at 85.7%.</li>
+              <li>Models generally score lower on inclusive education than general pedagogy, a potential gap in training data.</li>
+              <li>The smallest models (Claude 3 Haiku at 57.4%, GPT-4o Mini at 69.5%) show a sharper drop-off than on general pedagogical knowledge.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- 3.4 STUDENT WORK JUDGEMENT                   -->
+        <!-- ============================================ -->
+        <div class="section-divider" id="student-work">
+          <h2>3.4 Student Work Judgement</h2>
+          <p>Applied assessment judgement rather than knowledge recall. 12 models tested on comparative judgement, 7 on standards-based grading (pilot). <a href="methods.html#student-work">Methodology</a></p>
+        </div>
+
+        <!-- CJ -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Comparative Judgement: Accuracy and Reliability</h3>
+            <p class="chart-subtitle">79 pairs of student work, tested in both presentation orders. 12 models.</p>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="acaraChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Rankings here do not predict rankings on other benchmarks. Each evaluation tests a different capability.</li>
+              <li>GPT-5 has the highest reliability (94.1%) but not the highest accuracy, suggesting strong position-invariance.</li>
+              <li>Gemini 3 Flash shows a notable accuracy-reliability gap (81% vs 69%), suggesting position bias in its judgements.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SG -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Standards-Based Grading <span class="pilot-badge">Pilot</span></h3>
+            <p class="chart-subtitle">7 models tested on 204 cases. Absolute classification against ACARA standards.</p>
+          </div>
+          <div class="chart-container" style="height: 300px;">
+            <canvas id="acaraSgChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Overall accuracy was 50.1% across all seven models. All models showed strong central tendency bias, over-predicting Satisfactory.</li>
+              <li>Above Satisfactory accuracy was 5.5% across models. Models almost never identified high-quality work correctly.</li>
+              <li>Below Satisfactory accuracy was much higher (72.3%), suggesting models can identify clearly weak work but struggle to distinguish between adequate and excellent work.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Why such low accuracy? callout -->
+        <div class="note">
+          <p><strong>Why such low accuracy?</strong> The ACARA achievement standards used as grading criteria may lack sufficient specificity for absolute classification. The standards describe what students should know and do at each level, but they may not provide enough detail about what distinguishes Above Satisfactory from Satisfactory work. Models might perform better with richer criteria that explicitly describe the characteristics of each grade level. This finding suggests a limitation in the task design, not only in the models. A structured reasoning pilot (requiring models to reason step-by-step before classifying) made performance worse, not better.</p>
+        </div>
+
+        <!-- ============================================ -->
+        <!-- 3.5 COST AND EFFICIENCY                      -->
+        <!-- ============================================ -->
+        <div class="section-divider" id="cost-efficiency">
+          <h2>3.5 Cost and Efficiency</h2>
+          <p>How many tokens does each model use to complete the neuromyths survey and diagnostic scenarios? Thinking models generate internal reasoning tokens that increase cost substantially.</p>
+        </div>
+
+        <!-- Token Usage -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Token Usage: Survey + Scenarios</h3>
+            <p class="chart-subtitle">Total tokens for neuromyths + scenarios. Thinking models use ~3x more tokens.</p>
+          </div>
+          <div class="chart-container" style="height: 450px;">
+            <canvas id="tokenChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Thinking models average ~20,000 tokens versus ~6,000 for standard models, roughly 3&times; more.</li>
+              <li>Gemini 2.5 Pro uses the most tokens (38,069) due to extensive internal reasoning.</li>
+              <li>Standard Claude and GPT-4o models cluster tightly around 5,300&ndash;6,700 tokens.</li>
+              <li>Token counts here cover only the survey and scenarios. The full evaluation (including 1,143 pedagogy items) costs significantly more.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="chart-section">
+          <div class="chart-header">
+            <h3 class="chart-title">Model Release Timeline</h3>
+            <p class="chart-subtitle">Release date vs teacher certification knowledge score. 23 models with data.</p>
+          </div>
+          <div class="chart-container" style="height: 380px;">
+            <canvas id="timelineChart"></canvas>
+          </div>
+          <div class="observations">
+            <strong>Key observations:</strong>
+            <ul>
+              <li>Models from late 2025 generally outperform those from early 2024, but there is wide variation within each period.</li>
+              <li>Claude 3 Haiku (March 2024) scores 54.8% while Claude 4.5 Opus (November 2025) scores 88.1%, a 33-point improvement in 20 months from the same provider.</li>
+              <li>Architecture and training choices matter as much as release date. Gemini 2.5 Pro (March 2025) leads at 88.5% while models released later score lower.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- CROSS-EVALUATION PATTERNS                    -->
+        <!-- ============================================ -->
+        <h2 id="cross-evaluation">Cross-evaluation patterns</h2>
+
+        <p>High performance on one benchmark does not predict high performance on another. Gemini 2.5 Pro leads on pedagogical knowledge but scores below several smaller models on neuromyth identification. ACARA comparative judgement rankings do not correlate with knowledge benchmarks either. This is why we report each evaluation separately rather than combining them into a single score.</p>
+
+        <p>Model size matters: smaller and cheaper models consistently score lowest across all benchmarks. Thinking models use roughly 3&times; more tokens without always scoring higher, which has cost implications for deployment. And the standards-based grading pilot shows that even frontier models struggle with absolute classification when the grading criteria lack specificity.</p>
+
+        <div class="note">
+          <p>These results should be interpreted alongside the documented <a href="discussion.html">limitations</a>. Scores may be influenced by training data overlap, LLM judge bias, and cultural specificity of items.</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">AlignED</a>
+          <p>Benchmarking AI performance on professional teaching tasks.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="discussion.html">Discussion</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="appendices.html#data-access">Data Access</a></li>
+            <li><a href="appendices.html#citation">Citation</a></li>
+            <li><a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 AlignED. Data hosted on OSF. Last updated: February 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/charts.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

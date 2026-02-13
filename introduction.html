@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction — AlignED</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="introduction">
+
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">AlignED</a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <a href="index.html">Abstract</a>
+        <a href="introduction.html" class="active">1. Introduction</a>
+        <a href="methods.html">2. Methods</a>
+        <a href="results.html">3. Results</a>
+        <a href="discussion.html">4. Discussion</a>
+        <a href="appendices.html">Appendices</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h1>Introduction</h1>
+      <p class="subtitle">Why educational AI evaluation matters, and the gap AlignED addresses</p>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="prose">
+
+        <h2>The opportunity and the uncertainty</h2>
+
+        <p>AI adoption in education is accelerating. Teachers across the world are integrating generative AI into lesson planning, assessment design, and personalised student support. Some of this integration is institutional; much of it is informal, driven by individual teachers experimenting with tools on their own time.</p>
+
+        <p>The opportunity is real. AI can draft differentiated materials in minutes, generate formative assessment items at scale, and provide rapid feedback on student writing. For teachers facing workload pressures and growing class sizes, these capabilities are not trivial.</p>
+
+        <p>But so is the uncertainty. The speed of adoption means that consequential decisions about teaching and learning are being made faster than evidence can accumulate. Schools are adopting AI-powered tools before anyone has systematically tested whether those tools produce outputs aligned with what we know about how students learn. Teachers are trusting AI-generated lesson plans without a clear picture of where the models succeed and where they fail.</p>
+
+        <p>This is not a call for caution over action. It is a call for evidence alongside action.</p>
+
+        <h2>A non-normal technology</h2>
+
+        <p>Generative AI differs from previous educational technologies in kind, not merely in degree. Interactive whiteboards externalised display. Learning management systems externalised distribution and record-keeping. Search engines externalised access to information. Each of these tools changed the logistics of teaching while leaving the core intellectual work largely intact.</p>
+
+        <p>Generative AI externalises production itself. It generates essays, lesson plans, feedback comments, and assessment rubrics that were previously the exclusive domain of professional judgement (Selwyn, 2022). When a teacher writes feedback on a student essay, that feedback reflects pedagogical knowledge, knowledge of the individual student, and professional values about what matters in learning. When an AI writes that feedback, it reflects statistical patterns in training data. These are not the same thing, even when the surface text looks similar.</p>
+
+        <p>The speed of adoption is unprecedented. Previous educational technologies took years or decades to reach widespread classroom use. Generative AI reached millions of teachers within months of public availability. This compression of the adoption timeline has outpaced the capacity of educational research to provide guidance.</p>
+
+        <h2>The socio-technical lens</h2>
+
+        <p>We adopt a socio-technical perspective on AI in education. This means treating the relationship between AI and educational practice as mutually constitutive rather than deterministic (Facer, 2011). AI does not simply act on educational systems from outside. Educational practices, values, and institutions also shape how AI is developed, deployed, adopted, and resisted (Williamson &amp; Facer, 2023).</p>
+
+        <p>This perspective has practical consequences for how we approach evaluation. A purely technical evaluation would ask: how accurate is the model? A socio-technical evaluation asks: how well does the model perform on the tasks that matter to educational practice, and where do its failures carry the greatest risk?</p>
+
+        <p>This lens motivates benchmarking as a form of evidence-based engagement. The goal is neither uncritical adoption nor blanket rejection. It is to generate the kind of specific, task-level evidence that teachers, school leaders, and policymakers need to make informed decisions about where AI can be trusted and where human judgement remains essential.</p>
+
+        <h2>Background and related work</h2>
+
+        <p>Recent work has begun to evaluate large language models on educational tasks, though the field remains fragmented and most efforts focus on narrow slices of teaching practice.</p>
+
+        <p>The Pedagogy Benchmark tests models on 920 teacher certification items drawn from Chilean national exams, spanning content knowledge, pedagogical content knowledge, and general pedagogy. Frontier models reach 82 to 89 per cent accuracy on these items, suggesting strong performance on the declarative knowledge tested in certification contexts (AI-for-Education, 2025). However, certification items test recognition and recall rather than the applied reasoning teachers use daily.</p>
+
+        <p>MathTutorBench takes a different approach, evaluating tutoring dialogue quality across multiple dimensions including Socratic questioning and error correction. A key finding is that subject expertise does not translate directly to pedagogical skill: models that score well on mathematics problems do not necessarily produce effective tutoring interactions (Macina et al., 2025). This disconnect between knowing content and knowing how to teach it is a recurring theme in educational AI evaluation.</p>
+
+        <p>OpenLearnLM proposes a more comprehensive framework spanning knowledge, skills, and attitudes (the KSA framework), with the goal of evaluating models across the full breadth of educational competence (OpenLearnLM, 2025). The framework is ambitious, though implementation remains in early stages.</p>
+
+        <p>Most directly relevant to AlignED, Spitzer et al. (2025) examined whether LLMs can identify neuromyths, the persistent misconceptions about learning (such as "learning styles" or "we only use 10% of our brains") that circulate widely among teachers. Their findings are instructive. When presented with neuromyths in isolation, LLMs outperform teachers, achieving roughly 80 per cent accuracy at identifying false claims. But when the same misconceptions are embedded in practical teaching questions, models show sycophantic behaviour, agreeing with the misconception when it is framed as the teacher's preferred approach. This gap between abstract knowledge and applied reasoning is precisely the kind of failure that matters in educational contexts.</p>
+
+        <p>Despite this growing body of work, a significant gap remains. No existing benchmark suite combines neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge, and applied student work judgement into a single evaluation framework. Existing benchmarks tend to focus on content knowledge or tutoring performance as individual tasks. None test the full range of professional knowledge that teachers draw on daily, from recognising misconceptions about learning to diagnosing why a well-intentioned strategy fails in a specific classroom context to comparing student work against curriculum standards. AlignED is designed to address this gap.</p>
+
+        <h2>From AI safety to pedagogical alignment</h2>
+
+        <p>The concept of alignment has a specific meaning in AI safety research. An AI system is aligned when its behaviour matches the intentions, values, and goals of its users and the broader communities it affects. Misalignment occurs when a system pursues objectives that diverge from what humans actually want, even if the system is technically competent.</p>
+
+        <p>AI alignment is a subset of AI safety. Safety encompasses the full range of risks, from misuse to technical failure to unintended consequences. Alignment focuses specifically on the match between what the system does and what it should do.</p>
+
+        <p>Pedagogical alignment is a specific form of AI alignment applied to educational contexts. A pedagogically aligned AI produces outputs that are consistent with established evidence about how students learn, how teaching works, and what constitutes sound professional practice. A pedagogically misaligned AI produces outputs that contradict this evidence, regardless of how fluent, confident, or superficially helpful those outputs appear.</p>
+
+        <p>If an AI suggests a strategy that contradicts how students actually learn, it is, by definition, misaligned. The fluency of the suggestion is irrelevant. The politeness of the tone is irrelevant. What matters is whether the underlying reasoning reflects what the evidence says about learning.</p>
+
+        <h2>The problem made concrete</h2>
+
+        <p>Consider what is already happening. AI systems can now generate detailed feedback on student essays, produce differentiated lesson plans for mixed-ability classes, and draft assessment rubrics aligned to curriculum standards. On some of these tasks, AI performance is approaching human-level quality in terms of surface features: coherence, coverage, and specificity.</p>
+
+        <p>But surface quality and pedagogical alignment are not the same thing. An AI system can produce feedback that is consistent, fast, and polite, but fundamentally at odds with how students actually make progress. It can recommend a revision strategy that sounds reasonable but ignores what we know about cognitive load. It can grade student work reliably but against criteria that miss the qualities that matter most for learning.</p>
+
+        <p>The risk is not that AI will produce obviously bad outputs. Obvious failures are easy to catch. The risk is that AI will produce outputs that look right to a tired teacher at the end of a long day, but that subtly misdirect student learning in ways that accumulate over weeks and months.</p>
+
+        <h2>How teachers are already using AI</h2>
+
+        <p>This is not a future scenario. Teachers are using AI now, and at scale.</p>
+
+        <p>The OECD TALIS 2024 survey provides the most comprehensive picture to date. Among lower secondary teachers across OECD countries, 41 per cent report having used AI in their professional practice (OECD, 2024). Of those teachers who use AI, 68 per cent use it for lesson preparation, making it the most common application. Administrative tasks follow at 64 per cent. Assessment and feedback account for 26 per cent of AI use among teachers.</p>
+
+        <p>These numbers matter for two reasons. First, they confirm that AI adoption in teaching is not speculative. It is happening now, across diverse educational systems, and at a scale that demands rigorous evaluation. Second, the distribution of use cases reveals where the stakes are highest. Lesson preparation and assessment are core pedagogical activities. When AI contributes to these tasks, the quality of its outputs has direct consequences for student learning.</p>
+
+        <p>The 26 per cent figure for assessment and feedback deserves particular attention. Assessment is where the gap between surface quality and pedagogical alignment is most consequential. A well-formatted but poorly calibrated piece of feedback can actively mislead a student about what they need to do next.</p>
+
+        <h2>The evaluation gap</h2>
+
+        <p>There is no shortage of AI evaluations. Benchmarks like MMLU, Humanity's Last Exam, and hundreds of others test models on academic knowledge, reasoning, and specialised professional tasks. But there is a shortage of evaluations that test models on the educational tasks they are currently being used for: identifying misconceptions about learning, diagnosing why teaching strategies fail in practice, answering the kinds of questions that appear on teacher certification exams, and comparing student work against curriculum standards.</p>
+
+        <p>This gap is not merely academic. It has immediate practical consequences. Without task-specific benchmarks, teachers have no evidence base for deciding which AI outputs to trust. School leaders have no framework for evaluating AI tools beyond vendor claims. Policymakers have no data to inform guidance on AI use in classrooms. And AI developers have no signal about where their models fail on the tasks that matter most to education.</p>
+
+        <p>AlignED exists to begin closing this gap. It is a benchmark suite designed to evaluate AI models on the professional knowledge and applied reasoning that teachers use daily. It does not test everything. It tests five specific capabilities, chosen because they represent distinct and consequential aspects of teaching practice where AI is already being deployed.</p>
+
+        <p>The next section describes how AlignED operationalises these concerns into five concrete evaluations.</p>
+
+        <h2>References</h2>
+
+        <p>AI-for-Education. (2025). Pedagogy Benchmark. <a href="https://github.com/AI-for-Education/pedagogy-benchmark" target="_blank">https://github.com/AI-for-Education/pedagogy-benchmark</a></p>
+
+        <p>Facer, K. (2011). <em>Learning Futures: Education, Technology and Social Change</em>. Routledge.</p>
+
+        <p>Macina, J., Daheim, N., Chowdhury, S. P., Saha, T., Kazemzadeh, S., Stede, M., &amp; Gurevych, I. (2025). MathTutorBench: A benchmark for measuring open-ended pedagogical ability of LLM tutors. <em>Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing (EMNLP 2025)</em>.</p>
+
+        <p>OECD. (2024). <em>TALIS 2024 Results (Volume I): Teachers and School Leaders as Valued Professionals</em>. OECD Publishing.</p>
+
+        <p>OpenLearnLM. (2025). OpenLearnLM: A comprehensive KSA framework for evaluating educational AI. <em>arXiv:2601.13882</em>.</p>
+
+        <p>Selwyn, N. (2022). The future of AI and education: Some cautionary notes. <em>European Journal of Education</em>, 57(4), 620–631.</p>
+
+        <p>Spitzer, P., Moeller, K., &amp; Ninaus, M. (2025). LLMs outperform humans in identifying neuromyths but show sycophantic behavior when these are embedded in practical questions. <em>Trends in Neuroscience and Education</em>.</p>
+
+        <p>Williamson, B. &amp; Facer, K. (2023). Instituting socio-technical education futures. <em>Learning, Media and Technology</em>, 48(2), 181–197.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="color: white;">AlignED</a>
+          <p>Benchmarking AI performance on professional teaching tasks.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Sections</h4>
+          <ul>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="methods.html">Methods</a></li>
+            <li><a href="results.html">Results</a></li>
+            <li><a href="discussion.html">Discussion</a></li>
+            <li><a href="appendices.html">Appendices</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="appendices.html#data-access">Data Access</a></li>
+            <li><a href="appendices.html#citation">Citation</a></li>
+            <li><a href="https://github.com/trgallagher-research/AlignED-research-report" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 AlignED. Data hosted on OSF. Last updated: February 2026.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
