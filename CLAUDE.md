@@ -100,3 +100,15 @@ Prose max-width: 960px. Charts can go wider (1100px via `.container-wide`).
 ## CSS Rules
 
 All styles live in `css/style.css`. No inline styles on any page. The old dual-stylesheet problem (index.html and results.html had their own inline styles) has been resolved.
+
+## API Keys and Rate Limits
+
+### Semantic Scholar API
+- Key stored in `.env` as `SEMANTIC_SCHOLAR_API_KEY`. NEVER commit this file.
+- Rate limit: **1 request per second**, cumulative across all endpoints.
+- Send key in request header as `x-api-key`.
+- Docs: https://www.semanticscholar.org/product/api/tutorial
+
+### Key Hygiene
+- `.env` is in `.gitignore`. Verify before every commit.
+- Never hardcode API keys in code, comments, or HTML files.

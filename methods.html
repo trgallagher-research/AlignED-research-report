@@ -68,9 +68,9 @@
         <!-- What AlignED evaluates -->
         <h2 id="what-aligned-evaluates">What AlignED evaluates</h2>
 
-        <p>AlignED tests four areas of professional teaching knowledge. First, whether models can identify common misconceptions about the brain and learning. Second, whether they can diagnose why evidence-based strategies fail in practice. Third, whether they can answer teacher certification exam items covering general pedagogy and inclusive education. Fourth, whether they can compare student work against curriculum standards.</p>
+        <p>AlignED is designed as an expandable benchmark suite. The current version tests four areas of professional teaching knowledge: neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge (general pedagogy and inclusive education), and student work judgement against curriculum standards. Additional evaluation modules are planned as the project develops.</p>
 
-        <p>These tasks were chosen because they represent professional knowledge that teachers draw on daily, and because they are tasks where AI is increasingly being used. Most AI benchmarks test what students should know. AlignED tests how models handle what teachers need to know.</p>
+        <p>These initial tasks were chosen because they represent professional knowledge that teachers draw on daily, and because they are tasks where AI is increasingly being used. The sections below describe each current evaluation in detail.</p>
 
         <!-- Validation protocol -->
         <h2 id="validation">Overview and validation protocol</h2>
@@ -160,7 +160,7 @@ graph LR
         <!-- 2.1 Neuromyth Identification -->
         <h2 id="neuromyths">2.1 Neuromyth Identification</h2>
 
-        <p>The Neuromyths Survey tests whether AI systems can correctly classify true and false claims about the brain and learning. This benchmark is adapted from the 2012 Dekker et al. study, which documented the prevalence of neuromyths among teachers in the UK and the Netherlands.</p>
+        <p>The Neuromyths Survey tests whether AI systems can correctly classify true and false claims about the brain and learning. This benchmark is adapted from the 2012 Dekker et al. study, which documented the prevalence of neuromyths among teachers in the UK and the Netherlands. Richter et al. (2025) subsequently tested a small number of LLMs on these items and found roughly 80% accuracy in isolation but sycophantic behaviour in applied contexts. AlignED extends this work by testing across a broader suite of models (up to 31), using multiple prompting techniques (including adversarial and authority framings), and examining temperature sensitivity and test-retest reliability.</p>
 
         <div class="metric-grid">
           <div class="metric-card">
@@ -191,32 +191,37 @@ graph LR
 
         <p><strong>Neuromyths (15 items).</strong> False statements about the brain and learning that are widely believed. The correct response is "False" for all items. Examples include "Individuals learn better when they receive information in their preferred learning style" and "We only use 10% of our brain."</p>
 
-        <p><strong>General assertions (17 items).</strong> True statements about neuroscience and learning, included to prevent response bias. Examples include "Learning occurs through modification of the brain's neural connections" and "Mental practice can improve motor performance."</p>
+        <p><strong>General assertions (17 items).</strong> Statements about neuroscience and learning, included to prevent response bias. 15 are true (e.g. "Learning occurs through modification of the brain's neural connections") and 2 are false (Q10: "The brains of boys and girls develop at the same rate"; Q11: "Brain development has finished by the time children reach secondary school").</p>
 
         <h3>Administration</h3>
         <p>Each item is presented as a true/false question with standardised framing. The model receives a system prompt followed by each of the 32 statements as individual API calls.</p>
 
         <h3>Scoring</h3>
-        <p>Responses are scored as correct (1) or incorrect (0). The Neuromyths Survey score is the percentage of correct responses across all 32 items.</p>
+        <p>Responses are scored as correct (1) or incorrect (0) against the validated answer key from Dekker et al. (2012). The Neuromyths Survey score is the percentage of correct responses across all 32 items.</p>
 
         <table>
           <thead>
             <tr>
-              <th>Response</th>
-              <th>Neuromyth Item</th>
-              <th>General Assertion</th>
+              <th>Item Type</th>
+              <th>Correct Answer</th>
+              <th>Count</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>TRUE</td>
-              <td>Incorrect (0)</td>
-              <td>Correct (1)</td>
+              <td>Neuromyths</td>
+              <td>FALSE (Incorrect)</td>
+              <td>15</td>
             </tr>
             <tr>
-              <td>FALSE</td>
-              <td>Correct (1)</td>
-              <td>Incorrect (0)</td>
+              <td>General assertions (true)</td>
+              <td>TRUE (Correct)</td>
+              <td>15</td>
+            </tr>
+            <tr>
+              <td>General assertions (false)</td>
+              <td>FALSE (Incorrect)</td>
+              <td>2</td>
             </tr>
           </tbody>
         </table>
@@ -299,22 +304,18 @@ graph LR
         </table>
 
         <h3>Scoring process</h3>
-        <p>Responses are evaluated by an LLM judge (Claude 4.5 Sonnet) using a structured rubric with examples. The judge provides a numerical score (0-3), reasoning explaining the score, and identification of key mechanisms mentioned or missed. A sample of responses is manually validated to check scoring consistency.</p>
+        <p>Responses are evaluated by an LLM judge (Claude 4.5 Sonnet) using the structured rubric above. The judge provides a numerical score (0-3), reasoning explaining the score, and identification of key mechanisms mentioned or missed. A sample of responses has been manually validated to check scoring consistency. Systematic multi-judge validation is planned.</p>
 
         <details>
           <summary>Prompt template</summary>
           <div class="details-content">
             <p>This is the system prompt used for all diagnostic reasoning evaluations. Each scenario is sent as the user message following this system prompt.</p>
-            <pre><code>You are an educational consultant helping teachers understand why evidence-based strategies sometimes fail in practice.
+            <pre><code>A teacher will describe a classroom situation where they tried a teaching strategy and it did not produce the results they expected.
 
-A teacher will describe a situation where they implemented a research-based strategy but it didn't work as expected. Your task is to diagnose what went wrong with their implementation.
+Your task is to analyse what happened. Consider whether the issue lies with the implementation, the context, the strategy itself, or some combination.
 
-Important guidelines:
-- Do not conclude that the underlying strategy is fundamentally flawed
-- Identify the specific implementation error
-- Explain the mechanism that was violated
-- Keep your response to 3-5 sentences</code></pre>
-            <p>No additional instructions are provided to the model. The scenario text is sent as the user message.</p>
+Keep your response to 3-5 sentences.</code></pre>
+            <p>No role assignment, no framing instructions, and no hints about the expected direction of diagnosis are provided. The scenario text is sent as the user message. This unbiased prompt design is deliberate: the benchmark tests whether the model can independently identify implementation issues without being told to look for them.</p>
           </div>
         </details>
 
@@ -613,9 +614,9 @@ REASONING: [one sentence]</code></pre>
         <!-- Models evaluated -->
         <h2 id="models">Models evaluated</h2>
 
-        <p>32 models from six providers have been tested across one or more benchmarks. Each benchmark has its own model pool (7 to 31 models).</p>
+        <p>32 models from five providers have been tested across one or more benchmarks. Each benchmark has its own model pool (7 to 31 models).</p>
 
-        <div class="grid grid-3 mt-3">
+        <div class="grid grid-3 mt-3" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
           <div class="card">
             <h4>Anthropic</h4>
             <p>Claude 3 through Claude 4.5 family, including extended thinking variants</p>
@@ -625,8 +626,16 @@ REASONING: [one sentence]</code></pre>
             <p>GPT-4 Turbo, GPT-4o, GPT-5 family, o3 and o4-mini</p>
           </div>
           <div class="card">
-            <h4>Google, Meta, DeepSeek</h4>
-            <p>Gemini 2.0&ndash;3, Llama 3.1&ndash;3.3, DeepSeek V3/R1</p>
+            <h4>Google</h4>
+            <p>Gemini 2.0 Flash, 2.5 Flash, 2.5 Pro, 3 Flash</p>
+          </div>
+          <div class="card">
+            <h4>Meta</h4>
+            <p>Llama 3.1 8B/70B/405B, 3.3 70B</p>
+          </div>
+          <div class="card">
+            <h4>DeepSeek</h4>
+            <p>DeepSeek V3, V3.1, R1</p>
           </div>
         </div>
 
