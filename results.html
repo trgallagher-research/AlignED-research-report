@@ -78,9 +78,6 @@
           <div class="legend-item">
             <div class="legend-dot" style="background: #536DFE;"></div> DeepSeek
           </div>
-          <div class="legend-item">
-            <div class="legend-dot" style="background: #F97316;"></div> Mistral
-          </div>
         </div>
 
         <!-- ============================================ -->
@@ -108,7 +105,7 @@
 
         <!-- Story: Q21 contested item -->
         <div class="note">
-          <p><strong>Q21: A contested item that highlights benchmark limitations.</strong> "Environments that are rich in stimulus improve the brains of pre-school children" is classified as a neuromyth in the Dekker et al. (2012) instrument. The neuroscience behind this classification is that the original enrichment findings came from rats raised in deprived laboratory conditions (OECD, 2002), and the broad generalisation to human children is not well-supported by the evidence. However, this classification is debatable. The ambiguity in both "enrichment" and the assumed baseline makes a well-informed "True" response reasonably defensible.</p>
+          <p><strong>Q21: A contested item that highlights benchmark limitations.</strong> "Environments that are rich in stimulus improve the brains of pre-school children" is classified as a neuromyth in the Dekker et al. (2012) instrument. The neuroscience behind this classification is that the original enrichment findings came from rats raised in deprived laboratory conditions (OECD, 2002, <em>Understanding the Brain: Towards a New Learning Science</em>), and the broad generalisation to human children is not well-supported by the evidence. However, this classification is debatable. The ambiguity in both "enrichment" and the assumed baseline makes a well-informed "True" response reasonably defensible.</p>
           <p>Every model tested answered this item incorrectly (endorsing it as true) with high confidence. We retain this item because it is part of the established instrument and because it illustrates an important point: some items in neuromyth instruments have genuine ambiguity that benchmark designers should acknowledge.</p>
         </div>
 
@@ -119,7 +116,7 @@
 
         <!-- Confidence probe finding -->
         <div class="note">
-          <p><strong>Universal overconfidence.</strong> Eight high-prevalence myths receive a follow-up confidence probe after the model answers. Every model tested selected "Very Confident" or "Somewhat Confident" on every item. No model ever expressed uncertainty, even when answering incorrectly. This is a consistent finding across all models and items.</p>
+          <p><strong>Near-universal overconfidence.</strong> Eight high-prevalence myths receive a follow-up confidence probe after the model answers. Across all confidence probes administered (8 items per model), no model selected "Uncertain" on any item, even when answering incorrectly. Every response was "Very Confident" or "Somewhat Confident." The sample is small (8 items), but the pattern is consistent across all models tested.</p>
         </div>
 
         <!-- ============================================ -->
@@ -129,8 +126,8 @@
 
         <section class="chart-section">
           <div class="chart-header">
-            <h3 class="chart-title">Diagnostic Reasoning Accuracy</h3>
-            <p class="chart-subtitle">30 models tested on 12 scenarios, scored 0&ndash;3 by LLM judge. <a href="methods.html#diagnostic-reasoning">Methodology</a></p>
+            <h3 class="chart-title">Diagnostic Reasoning Scores</h3>
+            <p class="chart-subtitle">30 models tested on 12 scenarios, rubric-scored 0&ndash;3 by LLM judge. <a href="methods.html#diagnostic-reasoning">Methodology</a></p>
           </div>
           <div class="chart-container">
             <canvas id="scenariosChart"></canvas>
@@ -207,7 +204,7 @@
         <!-- CJ -->
         <section class="chart-section">
           <div class="chart-header">
-            <h3 class="chart-title">Comparative Judgement: Accuracy and Reliability</h3>
+            <h3 class="chart-title">Comparative Judgement: Accuracy and Position-Swap Consistency</h3>
             <p class="chart-subtitle">79 pairs of student work, tested in both presentation orders. 12 models.</p>
           </div>
           <div class="chart-container" style="height: 380px;">
@@ -217,8 +214,8 @@
             <strong>Key observations:</strong>
             <ul>
               <li>Rankings here do not predict rankings on other benchmarks. Each evaluation tests a different capability.</li>
-              <li>GPT-5 has the highest reliability (94.1%) but not the highest accuracy, suggesting strong position-invariance.</li>
-              <li>Gemini 3 Flash shows a notable accuracy-reliability gap (81% vs 69%), suggesting position bias in its judgements.</li>
+              <li>GPT-5 has the highest position-swap consistency (94.1%) but not the highest accuracy, suggesting strong position-invariance.</li>
+              <li>Gemini 3 Flash shows a notable accuracy-consistency gap (81% vs 69%), suggesting position bias in its judgements.</li>
             </ul>
           </div>
         </section>
@@ -227,7 +224,7 @@
         <section class="chart-section">
           <div class="chart-header">
             <h3 class="chart-title">Standards-Based Grading <span class="pilot-badge">Pilot</span></h3>
-            <p class="chart-subtitle">7 models tested on 204 cases. Absolute classification against ACARA standards.</p>
+            <p class="chart-subtitle">7 models tested on 204 individual work samples from 68 tasks. Absolute classification against ACARA standards.</p>
           </div>
           <div class="chart-container" style="height: 300px;">
             <canvas id="acaraSgChart"></canvas>
@@ -235,8 +232,8 @@
           <div class="observations">
             <strong>Key observations:</strong>
             <ul>
-              <li>Overall accuracy was 50.1% across all seven models. All models showed strong central tendency bias, over-predicting Satisfactory.</li>
-              <li>Above Satisfactory accuracy was 5.5% across models. Models almost never identified high-quality work correctly.</li>
+              <li>Overall accuracy was 50.1% across all seven models, but this overstates performance. Cohen's kappa, which adjusts for chance agreement given the distribution of categories, averaged just κ = 0.252 ("fair" agreement on the Landis and Koch scale). The best model (Gemini 3 Flash) reached κ = 0.348; the lowest (GPT-5.2) was κ = 0.206. No model reached "moderate" agreement (κ > 0.40).</li>
+              <li>All models showed strong central tendency bias, over-predicting Satisfactory. Above Satisfactory accuracy was 5.5% across models. Models almost never identified high-quality work correctly.</li>
               <li>Below Satisfactory accuracy was much higher (72.3%), suggesting models can identify clearly weak work but struggle to distinguish between adequate and excellent work.</li>
             </ul>
           </div>
@@ -244,7 +241,7 @@
 
         <!-- Why such low accuracy? callout -->
         <div class="note">
-          <p><strong>Why such low accuracy?</strong> The ACARA achievement standards used as grading criteria may lack sufficient specificity for absolute classification. The standards describe what students should know and do at each level, but they may not provide enough detail about what distinguishes Above Satisfactory from Satisfactory work. Models might perform better with richer criteria that explicitly describe the characteristics of each grade level. This finding suggests a limitation in the task design, not only in the models. A structured reasoning pilot (requiring models to reason step-by-step before classifying) made performance worse, not better.</p>
+          <p><strong>Why such low agreement?</strong> Raw accuracy of 50% sounds like a coin flip, but Cohen's kappa tells the more precise story: at κ = 0.252 average, models are only marginally better than what chance would produce given the class distribution. The ACARA achievement standards used as grading criteria may lack sufficient specificity for absolute classification. They describe what students should know and do at each level, but may not provide enough detail about what distinguishes Above Satisfactory from Satisfactory work. Models might perform better with richer criteria that explicitly describe the characteristics of each grade level. Alternatively, the task may require a kind of grounded assessment expertise that current models lack. A structured reasoning pilot (requiring models to reason step-by-step before classifying) made performance worse, not better.</p>
         </div>
 
         <!-- ============================================ -->
@@ -299,7 +296,7 @@
         <!-- ============================================ -->
         <h2 id="cross-evaluation">Cross-evaluation patterns</h2>
 
-        <p>High performance on one benchmark does not predict high performance on another. Gemini 2.5 Pro leads on pedagogical knowledge but scores below several smaller models on neuromyth identification. ACARA comparative judgement rankings do not correlate with knowledge benchmarks either. This is why we report each evaluation separately rather than combining them into a single score.</p>
+        <p>High performance on one benchmark does not predict high performance on another. Gemini 2.5 Pro leads on pedagogical knowledge but scores below several smaller models on neuromyth identification. ACARA comparative judgement rankings do not correlate with knowledge benchmarks either.</p>
 
         <p>Model size matters: smaller and cheaper models consistently score lowest across all benchmarks. Thinking models use roughly 3&times; more tokens without always scoring higher, which has cost implications for deployment. And the standards-based grading pilot shows that even frontier models struggle with absolute classification when the grading criteria lack specificity.</p>
 

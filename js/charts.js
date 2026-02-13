@@ -200,7 +200,7 @@ function renderAcaraChart(canvasId, data) {
           barPercentage: 0.8
         },
         {
-          label: 'Reliability',
+          label: 'Position-Swap Consistency',
           data: reliabilityValues,
           backgroundColor: barColors.map(c => c + '80'),
           borderRadius: 4,

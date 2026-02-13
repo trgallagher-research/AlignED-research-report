@@ -68,7 +68,7 @@
         <!-- What AlignED evaluates -->
         <h2 id="what-aligned-evaluates">What AlignED evaluates</h2>
 
-        <p>AlignED is designed as an expandable benchmark suite. The current version tests four areas of professional teaching knowledge: neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge (general pedagogy and inclusive education), and student work judgement against curriculum standards. Additional evaluation modules are planned as the project develops.</p>
+        <p>AlignED is designed as an expandable benchmark suite. The current version includes five evaluations covering four areas of professional teaching knowledge: neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge (reported as two separate evaluations: general pedagogy and inclusive education), and student work judgement against curriculum standards. These five evaluations are organised into four methodological sections below, since CDPK and SEND share the same administration and scoring approach. Additional evaluation modules are planned as the project develops.</p>
 
         <p>These initial tasks were chosen because they represent professional knowledge that teachers draw on daily, and because they are tasks where AI is increasingly being used. The sections below describe each current evaluation in detail.</p>
 
@@ -340,7 +340,7 @@ Keep your response to 3-5 sentences.</code></pre>
         </div>
 
         <h3>CDPK: Cross-Domain Pedagogical Knowledge</h3>
-        <p>CDPK items test general pedagogical knowledge that applies across subject areas: curriculum design and planning, assessment and evaluation strategies, classroom management principles, learning theory and development, instructional strategies, and professional responsibilities. These items are drawn from the "Disciplinary and Curricular Knowledge" component of Chile's national teacher evaluation system, translated and validated for cross-cultural applicability.</p>
+        <p>CDPK items test general pedagogical knowledge that applies across subject areas: curriculum design and planning, assessment and evaluation strategies, classroom management principles, learning theory and development, instructional strategies, and professional responsibilities. These items are drawn from the "Disciplinary and Curricular Knowledge" component of Chile's national teacher evaluation system and translated into English. While pedagogical principles are broadly universal, some items may reflect Chilean educational policy or curricular context (see <a href="discussion.html">Limitations</a>).</p>
 
         <h3>SEND: Special Education Needs and Disability</h3>
         <p>SEND items focus on inclusive education and supporting diverse learners: identification of learning difficulties, differentiation strategies, accommodations and modifications, inclusive classroom practices, legal and ethical frameworks, and collaboration with specialists and families. This component is relevant for AI systems that provide educational advice affecting diverse student populations.</p>
@@ -394,9 +394,9 @@ Your answer (A/B/C/D):</code></pre>
         </div>
 
         <h3>Method</h3>
-        <p>Each of the 79 pairs is presented to the model in two orientations: forward (Sample A vs Sample B as originally ordered) and reverse (Sample B vs Sample A, swapped). This position-swap design tests whether the model's judgement is influenced by presentation order and provides a built-in reliability measure through position-swap scoring. Each orientation is evaluated 3 times (trials), yielding 237 total evaluations per model.</p>
+        <p>Each of the 79 pairs is evaluated across 3 independent trials, yielding 237 pair-level evaluations per model (79 × 3). Within each trial, pairs are presented in both forward (Sample A vs Sample B) and reverse (Sample B vs Sample A) orientations. This position-swap design tests whether the model's judgement is influenced by presentation order and provides a built-in measure of position-swap consistency.</p>
 
-        <p>The benchmark also includes a standards-based grading (SG) pilot, where each work sample is presented individually for absolute classification against the achievement standard (Above Satisfactory, Satisfactory, or Below Satisfactory). The SG pilot has been run on 7 models.</p>
+        <p>The benchmark also includes a standards-based grading (SG) pilot, where each work sample is presented individually for absolute classification against the achievement standard (Above Satisfactory, Satisfactory, or Below Satisfactory). The SG pilot covers 204 individual work samples drawn from 68 unique assessment tasks across three subjects (English, Mathematics, and Science). The SG pilot has been run on 7 models.</p>
 
         <h3>Scoring</h3>
         <p>Two metrics are reported for the comparative judgement task.</p>
@@ -416,14 +416,14 @@ Your answer (A/B/C/D):</code></pre>
               <td>0&ndash;100%</td>
             </tr>
             <tr>
-              <td><strong>Reliability</strong></td>
+              <td><strong>Position-swap consistency</strong></td>
               <td>Percentage of pairs where the model gave the same answer regardless of presentation order (forward vs reverse)</td>
               <td>0&ndash;100%</td>
             </tr>
           </tbody>
         </table>
 
-        <p>High accuracy with low reliability suggests the model is getting answers right by chance in some orientations. High reliability with low accuracy would indicate a systematic but incorrect judgement strategy. The ideal is high scores on both metrics.</p>
+        <p>High accuracy with low position-swap consistency suggests the model is getting answers right by chance in some orientations. High consistency with low accuracy would indicate a systematic but incorrect judgement strategy. The ideal is high scores on both metrics.</p>
 
         <h3>Excluded models</h3>
         <p>Four models were excluded from the ACARA results due to invalid response formats (0% accuracy from inability to produce valid judgements): DeepSeek R1, Gemini 3 Pro, GPT-5.2, and GPT-5 Mini.</p>
@@ -509,7 +509,7 @@ REASONING: [one sentence]</code></pre>
 
         <p>A KRI of 1.0 indicates perfect robustness (no degradation). Lower values indicate that correct answers at T=0 may be fragile.</p>
 
-        <p><strong>Key finding:</strong> Most evaluated models show exceptional temperature robustness, with average accuracy variation of only 0.6% across temperature settings. Educational knowledge, once learned, appears relatively stable.</p>
+        <p><strong>Key finding:</strong> Most evaluated models show exceptional temperature robustness on this task, with average accuracy variation of only 0.6% across temperature settings. Neuromyth classification accuracy appears relatively insensitive to temperature for most models.</p>
 
         <h3>Prompt sensitivity</h3>
         <p>Does rephrasing a question change the answer? We test each item with four prompt framings: standard (neutral, direct question), interrogative (question form emphasising inquiry), embedded (presented as common belief), and adversarial (presented with apparent authority).</p>
@@ -527,7 +527,7 @@ REASONING: [one sentence]</code></pre>
         <h3>Confidence calibration</h3>
         <p>When models are wrong, do they know it? We assess confidence calibration using a subset of 8 high-prevalence neuromyth items, asking models to rate their confidence as "Very confident," "Somewhat confident," or "Uncertain."</p>
 
-        <p><strong>Key finding:</strong> All evaluated models show universal overconfidence. No model ever selected "Uncertain" across all confidence probes. Even when incorrect, models express "Very confident" or "Somewhat confident." This is particularly problematic for educational applications where appropriate epistemic humility is valuable.</p>
+        <p><strong>Key finding:</strong> Across all confidence probes administered (8 items per model), no model selected "Uncertain" on any item. Even when answering incorrectly, models expressed "Very confident" or "Somewhat confident." The sample is small, but the pattern is consistent across all models tested. This is particularly problematic for educational applications where appropriate epistemic humility is valuable.</p>
 
         <h3>Token efficiency</h3>
         <p>How much reasoning does a model require to reach correct answers? We measure output tokens (length of model response) and performance-to-tokens ratio (accuracy relative to reasoning length). For practical deployment, efficiency has implications for cost, latency, and user experience. Models that achieve high accuracy with efficient responses may be preferable for real-time educational applications.</p>
@@ -577,13 +577,13 @@ REASONING: [one sentence]</code></pre>
             </tr>
             <tr>
               <td><strong>ACARA Comparative Judgement</strong></td>
-              <td>Pairwise comparison accuracy plus test-retest reliability across presentation orders</td>
+              <td>Pairwise comparison accuracy plus position-swap consistency across presentation orders</td>
               <td>0&ndash;100% (each metric)</td>
             </tr>
             <tr>
               <td><strong>ACARA Standards-Based Grading</strong></td>
-              <td>Three-category classification (Above Satisfactory / Satisfactory / Below Satisfactory)</td>
-              <td>0&ndash;100% accuracy per category</td>
+              <td>Three-category classification (Above Satisfactory / Satisfactory / Below Satisfactory). Raw accuracy and Cohen's kappa (chance-adjusted agreement) reported.</td>
+              <td>0&ndash;100% accuracy; κ = &minus;1 to 1</td>
             </tr>
           </tbody>
         </table>
@@ -647,6 +647,9 @@ REASONING: [one sentence]</code></pre>
           <li>Standardised prompt templates (published above for each benchmark)</li>
           <li>Documented scoring rubrics with examples</li>
         </ul>
+
+        <h3>A note on prompt design</h3>
+        <p>Different benchmarks use different prompt structures. Neuromyth identification uses a system prompt that frames the task as a survey. Diagnostic reasoning uses a system prompt that describes the task without hinting at the expected direction. Teacher certification items use no system prompt, presenting each question directly. ACARA prompts assign an assessor role. These differences reflect the design of each benchmark rather than a unified prompting strategy. Readers should be aware that prompt structure can influence model behaviour, and performance differences across benchmarks may partly reflect prompting choices as well as underlying capability.</p>
 
         <p>Raw data and scoring details are available through <a href="appendices.html#data-access">Data Access</a>.</p>
 
