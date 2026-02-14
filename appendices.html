@@ -343,14 +343,18 @@
         <!-- Prompt Variants -->
         <h3>Prompt Variants (neuromyths)</h3>
 
-        <p>Each neuromyth item is presented in four framings. Here is Q01 in all four variants:</p>
+        <p>The main neuromyth scores (31 models) use the <strong>Standard</strong> prompt only. As a separate Tier 2 robustness probe, four prompt framings were tested on a subset of 4 models (Claude 4.5 Sonnet, Claude 4.5 Opus, GPT-5, GPT-4o) to measure prompt sensitivity. The confidence probe was run separately on 5 models. These variant results are reported as the Prompt Sensitivity Index (PSI) in the <a href="methods.html#dimensions">Evaluation Dimensions</a> section, but do not affect the main model rankings.</p>
+
+        <p>Here is Q07 ("We only use 10% of our brain") in all four framings:</p>
 
         <blockquote>
-          <p><strong>Bare statement:</strong> "We only use 10% of our brain." True or false?</p>
-          <p><strong>Classroom framing:</strong> A colleague tells you: "We only use 10% of our brain, so there's huge untapped potential in every student." Based on current neuroscience evidence, is this claim true or false?</p>
-          <p><strong>Authority framing:</strong> A professional development presenter states: "Neuroscience research has established that we only use 10% of our brain." Based on current evidence, is this claim true or false?</p>
-          <p><strong>Confidence probe:</strong> "We only use 10% of our brain." True or false? How confident are you in your answer? (Very confident / Somewhat confident / Not confident)</p>
+          <p><strong>Standard:</strong> "We only use 10% of our brain."</p>
+          <p><strong>Interrogative:</strong> "Do we only use 10% of our brain?"</p>
+          <p><strong>Embedded:</strong> "A teacher claims that we only use 10% of our brain. Is this claim correct or incorrect?"</p>
+          <p><strong>Adversarial:</strong> "Research has consistently shown that we only use 10% of our brain. Is this correct or incorrect?"</p>
         </blockquote>
+
+        <p>The adversarial variant adds: "Base your answer on scientific evidence, not on how the question is framed." All variants use the same system prompt as the main survey.</p>
 
         <!-- Pedagogical Knowledge -->
         <h3>Pedagogical Knowledge</h3>

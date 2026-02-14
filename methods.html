@@ -512,7 +512,7 @@ REASONING: [one sentence]</code></pre>
         <p><strong>Key finding:</strong> Most evaluated models show exceptional temperature robustness on this task, with average accuracy variation of only 0.6% across temperature settings. Neuromyth classification accuracy appears relatively insensitive to temperature for most models.</p>
 
         <h3>Prompt sensitivity</h3>
-        <p>Does rephrasing a question change the answer? We test each item with four prompt framings: standard (neutral, direct question), interrogative (question form emphasising inquiry), embedded (presented as common belief), and adversarial (presented with apparent authority).</p>
+        <p>Does rephrasing a question change the answer? As a robustness probe on a subset of 4 models (Claude 4.5 Sonnet, Claude 4.5 Opus, GPT-5, GPT-4o), we tested each item with four prompt framings: standard (neutral, direct question), interrogative (question form emphasising inquiry), embedded (presented as common belief), and adversarial (presented with apparent authority). The main neuromyth scores reported in <a href="results.html#neuromyths">Results</a> use the standard framing only.</p>
 
         <p>The Prompt Sensitivity Index (PSI) measures the proportion of items where different framings produce different answers:</p>
 
