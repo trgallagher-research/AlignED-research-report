@@ -82,8 +82,8 @@ Structural: Don't use rhetorical questions for every section header. Mix with de
 
 ### Footer Tagline (all pages)
 
-Use: "Benchmarking AI performance on professional teaching tasks."
-Do NOT use: "Evaluating AI alignment with educational research evidence."
+Use: "Benchmarking AI models for educational practice."
+Do NOT use: "Evaluating AI alignment with educational research evidence." or "Benchmarking AI performance on professional teaching tasks."
 
 ## Visual Design
 
