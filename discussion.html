@@ -51,7 +51,7 @@
 
           <h3>4.1 Frontier models are improving but not yet reliably aligned</h3>
 
-          <p>Top models score above 90% on classification tasks such as neuromyth identification and pedagogical knowledge items. Applied judgement is a different story. Standards-based grading accuracy averages 50% across all models tested, but raw accuracy overstates performance because it does not account for chance agreement. Cohen's kappa, which adjusts for the agreement expected by chance given the distribution of categories, averages just 0.252 across the seven models tested. On the Landis and Koch (1977) scale, this is "fair" agreement. The best-performing model (Gemini 3 Flash, κ = 0.348) still falls short of "moderate" agreement (κ > 0.40). Models are barely better than chance at grading student work against curriculum standards.</p>
+          <p>Top models score above 90% on classification tasks such as neuromyth identification and pedagogical knowledge items. Applied judgement is a different story. On standards-based grading, the average Cohen's kappa across all seven models tested was just 0.252, meaning models are only marginally better than chance at grading student work against curriculum standards.</p>
 
           <p>Performance is uneven across task types within the same model. A model can identify neuromyths with 93% accuracy and still fail to distinguish excellent student work from adequate student work. Classification and judgement are different capabilities, and current models are far stronger at the first than the second.</p>
 
@@ -61,7 +61,7 @@
 
           <p>The gap between older and newer models is large and growing. Claude 3 Haiku, released in March 2024, scores 54.8% on teacher certification knowledge. Claude 4.5 Opus, released in November 2025, scores 88.1%. That is a 33-point improvement in 20 months from the same provider. Similar generational gaps appear across all benchmarks and all providers.</p>
 
-          <p>This trend is compounded by cost. Newer models are not only more capable but cheaper to run. There is little practical reason to use an older model when its successor outperforms it at a lower price. The practical consequence is straightforward: your experience with AI from six months ago may already be outdated. Evaluations that do not track model versions and release dates risk drawing conclusions from capabilities that no longer represent the current state of the technology.</p>
+          <p>This trend is compounded by cost. Newer models are not only more capable but cheaper to run. There is little practical reason to use an older model when its successor outperforms it at a lower price. The practical consequence is straightforward: an experience with AI from six months ago may already be outdated. Evaluations that do not track model versions and release dates risk drawing conclusions from capabilities that no longer represent the current state of the technology.</p>
 
           <h3>4.3 No single best model</h3>
 
@@ -71,9 +71,9 @@
 
           <h3>4.4 Assessment task type matters enormously</h3>
 
-          <p>Models perform well on classification tasks (is this statement true or false?) and poorly on absolute grading (does this student work meet the standard?). This is not simply a matter of difficulty. Classification provides clear decision boundaries. A neuromyth is either supported by evidence or it is not. Standards-based grading requires interpreting vague criteria and making fine-grained distinctions between adjacent performance levels.</p>
+          <p>The gap between classification and applied judgement is the most striking pattern in the data. Classification provides clear decision boundaries. A neuromyth is either supported by evidence or it is not. Standards-based grading requires interpreting criteria and making fine-grained distinctions between adjacent performance levels. When agreement is adjusted for chance, no model reaches even "moderate" agreement on the grading task.</p>
 
-          <p>The gap is larger than raw accuracy suggests. When agreement is adjusted for chance using Cohen's kappa, the average across all seven models drops to κ = 0.252, meaning models are only marginally better than random classification given the distribution of grade levels. No model reaches even "moderate" agreement (κ > 0.40). Two factors likely contribute. First, the ACARA achievement standards may lack sufficient specificity for reliable absolute classification by either humans or models. Second, current models may lack the grounding in student development and assessment practice needed to make these fine-grained judgements, regardless of rubric quality. When we asked models to reason step-by-step before classifying, performance got worse, not better. This suggests the bottleneck is not in the reasoning process, though whether it lies primarily in the criteria or in model capability remains an open question.</p>
+          <p>Two factors likely contribute. First, the ACARA achievement standards may lack sufficient specificity for reliable absolute classification by either humans or models. Second, current models may lack the grounding in student development and assessment practice needed to make these fine-grained judgements, regardless of rubric quality. When we asked models to reason step-by-step before classifying, performance got worse, not better. This suggests the bottleneck is not in the reasoning process, though whether it lies primarily in the criteria or in model capability remains an open question.</p>
 
           <h3>4.5 We urgently need more educational evaluations</h3>
 
@@ -91,15 +91,15 @@
 
           <p><strong>Varying sample sizes.</strong> Benchmarks range from 32 items (neuromyths) to 1,143 items (teacher certification knowledge). Statistical power differs accordingly. A three-point difference on a 32-item test carries less evidential weight than a three-point difference on a 1,143-item test. We report confidence intervals where appropriate, but readers should weight findings by sample size.</p>
 
-          <p><strong>Incomplete validation.</strong> We defined three validation tiers for each benchmark: internal consistency, external validation against human performance, and predictive validity for downstream educational outcomes. Not all tiers are complete for all benchmarks. The results presented here should be interpreted as provisional pending full validation.</p>
+          <p><strong>Incomplete validation.</strong> We defined three validation tiers for each benchmark: baseline reliability, robustness probes, and judge validation (see <a href="methods.html#validation">Methods</a>). Not all tiers are complete for all benchmarks. The results presented here should be interpreted as provisional pending full validation.</p>
 
           <h2>What we claim and what we do not</h2>
 
-          <p>AlignED measures how well AI models perform on specific benchmark tasks related to professional teaching. It does not measure whether a model is a good tutor, can teach effectively, or is safe to deploy in a classroom.</p>
+          <p>AlignED measures how well AI models perform on specific benchmark tasks relevant to educational practice. It does not measure whether a model is a good tutor, can teach effectively, or is safe to deploy in a classroom.</p>
 
           <p>A high score means the model answered benchmark items correctly. It does not mean the model can apply that knowledge in a real classroom with real students, real time pressure, and real consequences. Knowing that a learning-styles approach lacks evidence is not the same as redirecting a colleague who uses it. Scoring well on a teacher certification exam is not the same as teaching well.</p>
 
-          <p>These benchmarks are a starting point, not a finish line.</p>
+          <p>These benchmarks are a starting point. They do not tell us whether a model is safe to deploy or whether it will perform well in a real classroom.</p>
 
           <div class="note">
             <p>A model that cannot identify common neuromyths or diagnose basic implementation failures may be a poor fit for educational applications. But a model that performs well on these benchmarks still needs to be evaluated for safety, bias, and pedagogical effectiveness before deployment.</p>
@@ -114,7 +114,7 @@
             <li><strong>New benchmark modules.</strong> Lesson planning quality, unit design, and wellbeing and pastoral support are high-priority additions. Each requires its own item development, scoring rubric, and validation process.</li>
             <li><strong>Human validation studies.</strong> Comparing model performance to teacher panels on the same tasks will establish whether benchmark scores are meaningful indicators of practical capability.</li>
             <li><strong>Cross-cultural expansion.</strong> Extending pedagogical knowledge items beyond the Chilean context to include teacher certification content from other countries and educational traditions.</li>
-            <li><strong>Completing all three validation tiers.</strong> Internal consistency, external validation, and predictive validity for each benchmark. Until all three are complete, results remain provisional.</li>
+            <li><strong>Completing all three validation tiers.</strong> Baseline reliability, robustness probes, and judge validation for each benchmark. Until all three are complete, results remain provisional.</li>
           </ul>
 
           <h2>Closing</h2>
@@ -122,6 +122,8 @@
           <p>AI models are already being used for educational tasks. Teachers are adopting them. Students are using them. Policymakers are making decisions about them. The question is not whether AI will play a role in education. It already does. The question is whether we will measure what these tools can and cannot do before we build systems around them.</p>
 
           <p>AlignED is one contribution to that measurement. Five evaluations, 32 models, a set of findings that are already being overtaken by the next generation of releases. The work is to keep measuring, keep publishing, and keep being honest about what the data show and what they do not.</p>
+
+          <p>It is the author's view that the evidence will eventually show there are few, if any, cognitive tasks in education that AI cannot perform competently. The purpose of AlignED is to test that proposition rigorously rather than assert it.</p>
 
           <p>This is not something that will happen to us. It is a choice we get to make.</p>
 
