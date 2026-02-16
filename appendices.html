@@ -113,7 +113,7 @@
               <td></td>
             </tr>
             <tr>
-              <td>Q21*</td>
+              <td>Q21*†</td>
               <td>Environments that are rich in stimulus improve the brains of pre-school children.</td>
               <td>56–95%</td>
             </tr>
@@ -151,6 +151,8 @@
         </table>
 
         <p>Items marked * receive a confidence probe. Teacher Belief Rate from Dekker et al. (2012), based on samples from the UK and the Netherlands.</p>
+
+        <p>&dagger; Q21 is a contested item. The neuroscience behind this classification is that the original enrichment findings came from rats raised in deprived laboratory conditions (OECD, 2002), and the broad generalisation to human children is not well-supported by the evidence. However, the ambiguity in both &ldquo;enrichment&rdquo; and the assumed baseline makes a well-informed &ldquo;True&rdquo; response reasonably defensible. Every model tested answered this item incorrectly, as do the majority of human teachers (56&ndash;95% endorsement rate). The item is retained because it is part of the established instrument. See <a href="results.html#neuromyths">Results</a> for further discussion.</p>
 
         <!-- General Assertions -->
         <h3>General Assertions (17 items — correct answer: True, except Q10 and Q11)</h3>
@@ -414,11 +416,221 @@
 
         <p>The full evaluation framework used to audit each benchmark for completeness and rigour. This framework is designed to be reusable for future evaluations beyond the current AlignED suite.</p>
 
-        <p>The framework defines the components required for a complete, rigorous LLM evaluation. It covers item preparation (construct definition, source materials, transformation, answer key development), per-run configuration (prompt templates, model specification, run parameters, eval items), validation protocol (Tier 1 baseline reliability, Tier 2 extended probes, Tier 3 LLM-as-judge validation), scoring pipeline (extraction, deterministic and judgement-based scoring), exports (human-reviewable outputs, shareable datasets), and performance outcomes (item-level scores, intramodel reliability, summary metrics, narrative reporting).</p>
+        <h3>1. Item Preparation</h3>
 
-        <p>Each benchmark in AlignED is audited against this framework. The status of each component is tracked using a simple key: complete (evidence exists and is sufficient), partial (some evidence exists but incomplete), missing (no evidence found), or not applicable.</p>
+        <h4>1.1 Construct Definition</h4>
+        <p>What this eval claims to measure and why it matters.</p>
+        <ul><li><strong>Evidence:</strong> Documented statement of construct, rationale for why model performance on this matters</li></ul>
 
-        <p><strong>Full framework document:</strong> <a href="https://github.com/trgallagher-research/AlignED/blob/main/aligned_eval_framework.md" target="_blank">aligned_eval_framework.md on GitHub</a></p>
+        <h4>1.2 Source Materials</h4>
+        <p>What you started with.</p>
+        <ul><li><strong>Evidence:</strong> References to original instruments, documents, datasets, or note that items were originally authored</li></ul>
+
+        <h4>1.3 Transformation</h4>
+        <p>What you did to extract/adapt items from source materials.</p>
+        <ul><li><strong>Evidence:</strong> Documentation of extraction process, adaptations made, exclusions (e.g., &ldquo;removed score labels from work samples&rdquo;)</li></ul>
+
+        <h4>1.4 Answer Key Development</h4>
+        <p>How the scoring reference was established.</p>
+        <ul><li><strong>Evidence:</strong> Documentation of how correct answers were determined, who/what established them, any validation</li></ul>
+
+        <h3>2. Per-Run Configuration</h3>
+
+        <h4>2.1 Prompt Template</h4>
+        <ul>
+          <li><strong>Context Instructions:</strong> Role, persona assigned to model</li>
+          <li><strong>Task Instructions:</strong> What model should do with each item</li>
+          <li><strong>Output Instructions:</strong> Required format specification</li>
+          <li><strong>Evidence:</strong> Prompt template file(s), documented prompt structure</li>
+        </ul>
+
+        <h4>2.2 Model Specification</h4>
+        <ul>
+          <li>Lab (Anthropic, OpenAI, etc.)</li>
+          <li>Family (Sonnet, GPT, etc.)</li>
+          <li>Version (4.5, 4o, etc.)</li>
+          <li><strong>Evidence:</strong> Documented in config, code, or results files</li>
+        </ul>
+
+        <h4>2.3 Run Parameters</h4>
+        <ul>
+          <li>Temperature</li>
+          <li>Capabilities (search, tools, etc.)</li>
+          <li>Reasoning Mode (extended thinking, CoT, etc.)</li>
+          <li><strong>Evidence:</strong> Documented in config or code</li>
+        </ul>
+
+        <h4>2.4 Eval Items</h4>
+
+        <p><strong>Item Content</strong></p>
+        <ul>
+          <li>Stem/stimulus (question or scenario)</li>
+          <li>Response format (MCQ, T/F, open-ended, comparative judgement)</li>
+          <li><strong>Evidence:</strong> Item files, data files containing stimuli</li>
+        </ul>
+
+        <p><strong>Item Scoring Reference</strong></p>
+        <ul>
+          <li>Answer key (for deterministic scoring)</li>
+          <li>Scoring guidance (for judgement-based scoring)</li>
+          <li><strong>Evidence:</strong> Answer key file, rubric document</li>
+        </ul>
+
+        <p><strong>Item Metadata</strong></p>
+        <ul>
+          <li>Item ID</li>
+          <li>Topic/construct tags</li>
+          <li>Difficulty (if known)</li>
+          <li>Source citation</li>
+          <li><strong>Evidence:</strong> Metadata in item files or separate metadata file</li>
+        </ul>
+
+        <p><strong>Item Set Structure</strong></p>
+        <ul>
+          <li>Grouping (if items share context)</li>
+          <li>Sequence considerations (fixed vs. randomisable)</li>
+          <li><strong>Evidence:</strong> Documentation or code showing item organisation</li>
+        </ul>
+
+        <h3>3. Validation Protocol</h3>
+
+        <h4>3.1 Tier 1: Baseline (Minimum for Reported Results)</h4>
+        <p>Standard config (Temp=0, standard prompt) with reliability evidence:</p>
+        <ul>
+          <li>Large item set &rarr; Single run, internal consistency (Cronbach's &alpha;, split-half)</li>
+          <li>Small item set &rarr; Multiple runs (3+), test-retest reliability</li>
+          <li><strong>Evidence:</strong> Documented baseline runs, reliability statistics</li>
+        </ul>
+
+        <h4>3.2 Tier 2: Extended Probes (Robustness Analysis)</h4>
+        <ul>
+          <li>Stochasticity: Temperature variations</li>
+          <li>Prompt Sensitivity: Adversarial vs standard, role framing, few-shot</li>
+          <li>Format/Structure: Item sequence, option order</li>
+          <li><strong>Evidence:</strong> Probe run results, analysis comparing to Tier 1 baseline</li>
+        </ul>
+
+        <h4>3.3 Tier 3: LLM-as-Judge Validation (Judgement-Based Evals Only)</h4>
+        <ul>
+          <li>L1: Single judge, single run</li>
+          <li>L2: Single judge, multiple runs</li>
+          <li>L3: Multiple judges, agreement threshold</li>
+          <li>L4: Human subset, LLM correlation</li>
+          <li><strong>Evidence:</strong> Judge configuration, agreement statistics, human correlation data</li>
+        </ul>
+
+        <h3>4. Processing</h3>
+
+        <h4>4.1 LLM</h4>
+        <ul><li><strong>Evidence:</strong> Code/scripts that send items to model and collect responses</li></ul>
+
+        <h3>5. LLM Response</h3>
+
+        <h4>5.1 Raw Output</h4>
+        <ul>
+          <li>Text or structured response from model</li>
+          <li><strong>Evidence:</strong> Response files, logs</li>
+        </ul>
+
+        <h4>5.2 Run Metadata</h4>
+        <ul>
+          <li>Tokens (input, output, total)</li>
+          <li>Latency</li>
+          <li>Cost</li>
+          <li><strong>Evidence:</strong> Logged in response files or separate metadata</li>
+        </ul>
+
+        <h3>6. Scoring Pipeline</h3>
+
+        <h4>6.1 Extraction</h4>
+        <p>Isolating scorable content from full response (if needed).</p>
+        <ul><li><strong>Evidence:</strong> Extraction code/logic</li></ul>
+
+        <h4>6.2 Scoring</h4>
+
+        <p><strong>Deterministic</strong></p>
+        <ul>
+          <li>Answer key</li>
+          <li>Scoring script (R/Python)</li>
+          <li><strong>Evidence:</strong> Scoring script, answer key file</li>
+        </ul>
+
+        <p><strong>Judgement-Based</strong></p>
+        <ul>
+          <li>Rubric (eval-specific)</li>
+          <li>Evaluator specification (LLM/Human)</li>
+          <li><strong>Evidence:</strong> Rubric document, evaluator prompts/instructions</li>
+        </ul>
+
+        <h4>6.3 Score</h4>
+        <ul>
+          <li>Final score per item</li>
+          <li><strong>Evidence:</strong> Score output files</li>
+        </ul>
+
+        <h3>7. Exports (Human Review and Open Science)</h3>
+
+        <h4>7.1 Human-Reviewable</h4>
+        <p>Formatted outputs for sanity-checking at various stages.</p>
+        <ul><li><strong>Evidence:</strong> Human-readable output files, review logs</li></ul>
+
+        <h4>7.2 Shareable Dataset</h4>
+        <p>Prepared for open science (e.g., OSF).</p>
+        <ul><li><strong>Evidence:</strong> Cleaned dataset files, data dictionary, OSF project</li></ul>
+
+        <h3>8. Performance Outcomes</h3>
+
+        <h4>8.1 Item-Level Scores</h4>
+        <p>How did the model perform on each item?</p>
+        <ul><li><strong>Evidence:</strong> Item-level results file</li></ul>
+
+        <h4>8.2 Intramodel Reliability</h4>
+        <p>How consistent across runs? (if multiple runs)</p>
+        <ul><li><strong>Evidence:</strong> Cross-run comparison, reliability statistics</li></ul>
+
+        <h4>8.3 Summary Metrics</h4>
+        <ul>
+          <li>Accuracy</li>
+          <li>Item difficulty</li>
+          <li>Error patterns</li>
+          <li>Calibration</li>
+          <li>KRI (if Tier 2 probes)</li>
+          <li>Efficiency (if relevant)</li>
+          <li>Composite (if needed)</li>
+          <li><strong>Evidence:</strong> Summary statistics, analysis output</li>
+        </ul>
+
+        <h3>9. Performance Report (Qualitative and Contextual)</h3>
+
+        <h4>9.1 Narrative Summary</h4>
+        <ul><li><strong>Evidence:</strong> Written summary document</li></ul>
+
+        <h4>9.2 Visualisations</h4>
+        <ul><li><strong>Evidence:</strong> Charts, graphs, figures</li></ul>
+
+        <h4>9.3 Model Comparisons</h4>
+        <ul><li><strong>Evidence:</strong> Comparative analysis across models</li></ul>
+
+        <h4>9.4 Leaderboard Context</h4>
+        <ul><li><strong>Evidence:</strong> Positioning relative to other models/benchmarks</li></ul>
+
+        <h4>9.5 Probe Insights</h4>
+        <p>Temperature, prompt effects analysis.</p>
+        <ul><li><strong>Evidence:</strong> Tier 2 analysis writeup</li></ul>
+
+        <h4>9.6 Efficiency Analysis</h4>
+        <ul><li><strong>Evidence:</strong> Cost/token/latency analysis</li></ul>
+
+        <h3>Audit Status Key</h3>
+        <ul>
+          <li>&check; Complete (evidence exists and is sufficient)</li>
+          <li>&#9675; Partial (some evidence exists but incomplete)</li>
+          <li>&cross; Missing (no evidence found)</li>
+          <li>N/A Not applicable to this eval</li>
+          <li>? Unclear (needs human clarification)</li>
+        </ul>
+
+        <p><strong>Also available as:</strong> <a href="https://github.com/trgallagher-research/AlignED/blob/main/aligned_eval_framework.md" target="_blank">aligned_eval_framework.md on GitHub</a></p>
 
         <!-- ============================================================ -->
         <!-- APPENDIX E: REVISION HISTORY                                 -->
