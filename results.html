@@ -169,7 +169,7 @@
             <ul>
               <li>Gemini 2.5 Pro leads at 89.3%, the highest pedagogical knowledge score of any model tested.</li>
               <li>Claude 4.5 Opus is close behind at 88.7%, and several models cluster above 83%.</li>
-              <li>The gap between top and bottom is narrower here than on other benchmarks, suggesting general pedagogical knowledge is more evenly distributed across models.</li>
+              <li>The gap between top and bottom is narrower here than on other benchmarks, suggesting that general pedagogical knowledge is an area of relative strength across model families.</li>
             </ul>
           </div>
         </section>
@@ -241,7 +241,7 @@
 
         <!-- Why such low accuracy? callout -->
         <div class="note">
-          <p><strong>Why such low agreement?</strong> Raw accuracy of 50% sounds like a coin flip, but Cohen's kappa tells the more precise story: at κ = 0.252 average, models are only marginally better than what chance would produce given the class distribution. The ACARA achievement standards used as grading criteria may lack sufficient specificity for absolute classification. They describe what students should know and do at each level, but may not provide enough detail about what distinguishes Above Satisfactory from Satisfactory work. Models might perform better with richer criteria that explicitly describe the characteristics of each grade level. Alternatively, the task may require a kind of grounded assessment expertise that current models lack. A structured reasoning pilot (requiring models to reason step-by-step before classifying) made performance worse, not better.</p>
+          <p><strong>Why such low agreement?</strong> Raw accuracy of 50% sounds like a coin flip, but Cohen's kappa tells the more precise story: at κ = 0.252 average, models are only marginally better than what chance would produce given the class distribution. The ACARA achievement standards used as grading criteria may lack sufficient specificity for absolute classification. They describe what students should know and do at each level, but may not provide enough detail about what distinguishes Above Satisfactory from Satisfactory work. Two hypotheses warrant further investigation. First, the ACARA achievement standards may lack sufficient specificity for absolute classification, and models might perform better with richer criteria that explicitly describe the characteristics of each grade level. Second, the task may require a kind of grounded assessment expertise that current models lack. A structured reasoning pilot (requiring models to reason step-by-step before classifying) made performance worse, not better. Models were prompted to analyse the evidence in student work against the standard before committing to a classification. Rather than improving calibration, this appeared to make models more critical and deficit-focused, pushing more responses toward Below Satisfactory rather than producing more nuanced distinctions across all three categories.</p>
         </div>
 
         <!-- ============================================ -->
@@ -249,14 +249,14 @@
         <!-- ============================================ -->
         <div class="section-divider" id="cost-efficiency">
           <h2>3.5 Cost and Efficiency</h2>
-          <p>How many tokens does each model use to complete the neuromyths survey and diagnostic scenarios? Thinking models generate internal reasoning tokens that increase cost substantially.</p>
+          <p>How many tokens does each model use to complete the neuromyths survey and diagnostic scenarios? Models with thinking capabilities generate internal reasoning tokens that increase cost substantially.</p>
         </div>
 
         <!-- Token Usage -->
         <section class="chart-section">
           <div class="chart-header">
             <h3 class="chart-title">Token Usage: Survey + Scenarios</h3>
-            <p class="chart-subtitle">Total tokens for neuromyths + scenarios. Thinking models use ~3x more tokens.</p>
+            <p class="chart-subtitle">Total tokens for neuromyths + scenarios. Thinking models use ~3x more tokens</p>
           </div>
           <div class="chart-container" style="height: 450px;">
             <canvas id="tokenChart"></canvas>
@@ -302,6 +302,7 @@
 
         <div class="note">
           <p>These results should be interpreted alongside the documented <a href="discussion.html">limitations</a>. Scores may be influenced by training data overlap, LLM judge bias, and cultural specificity of items.</p>
+          <p>Training data overlap is a particular concern for benchmarks that draw on publicly available items. The neuromyth statements from Dekker et al. (2012) and the teacher certification items from the Pedagogy Benchmark are both accessible online, meaning some or all items may appear in model training data. High accuracy on these benchmarks may partly reflect memorisation rather than reasoning. The diagnostic reasoning scenarios and ACARA comparative judgement tasks are original to AlignED, which reduces but does not eliminate this risk. Item contamination is an inherent limitation of any benchmark using published instruments, and results should be interpreted with this in mind.</p>
         </div>
 
       </div>
