@@ -53,7 +53,7 @@
             <li><a href="#diagnostic-reasoning">2.2 Diagnostic Reasoning</a></li>
             <li><a href="#teacher-certification">2.3 Teacher Certification Knowledge</a></li>
             <li><a href="#student-work">2.4 Student Work Judgement</a></li>
-            <li><a href="#dimensions">2.5 Evaluation Dimensions</a></li>
+            <li><a href="#dimensions">2.5 Robustness and calibration probes (neuromyths)</a></li>
             <li><a href="#scoring">2.6 Scoring and Reporting</a></li>
             <li><a href="#models">Models evaluated</a></li>
           </ul>
@@ -64,19 +64,19 @@
 
         <p>Evaluations are administered programmatically through provider APIs, not through chat interfaces. Each model receives the same prompt for each item. Responses are collected, parsed, and scored automatically. This removes variability from manual interaction and allows testing at scale.</p>
 
-        <p>All evaluation parameters are documented and fixed: pinned model versions, fixed seeds where applicable, and standardised prompt templates. No human is typing prompts into a chatbot. Every model sees exactly the same input for every item, every time.</p>
+        <p>All evaluation parameters are documented and fixed: pinned model versions, fixed seeds where applicable, and standardised prompt templates. Every model sees exactly the same input for every item, every time.</p>
 
         <!-- What AlignED evaluates -->
         <h2 id="what-aligned-evaluates">What AlignED evaluates</h2>
 
-        <p>AlignED is designed as an expandable benchmark suite. The current version includes five evaluations covering four areas of professional teaching knowledge: neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge (reported as two separate evaluations: general pedagogy and inclusive education), and student work judgement against curriculum standards. These five evaluations are organised into four methodological sections below, since CDPK and SEND share the same administration and scoring approach. Additional evaluation modules are planned as the project develops.</p>
+        <p>AlignED is designed as an expandable benchmark suite. The current version includes five evaluations covering four areas of knowledge and reasoning that matter in educational practice: neuromyth identification, diagnostic reasoning about strategy implementation, teacher certification knowledge (reported as two separate evaluations: general pedagogy and inclusive education), and student work judgement against curriculum standards. These five evaluations are organised into four methodological sections below, since CDPK and SEND share the same administration and scoring approach. Additional evaluation modules are planned as the project develops.</p>
 
-        <p>These initial tasks were chosen because they represent professional knowledge that teachers draw on daily, and because they are tasks where AI is increasingly being used. The sections below describe each current evaluation in detail.</p>
+        <p>The sections below describe each current evaluation in detail.</p>
 
         <!-- Validation protocol -->
         <h2 id="validation">Overview and validation protocol</h2>
 
-        <p>This is the validation framework AlignED is working towards. Not all tiers are complete for all benchmarks. Current status is noted below.</p>
+        <p>This is the validation framework AlignED is working towards. Not all tiers are complete for all benchmarks. Current status is noted below. The full evaluation framework is available in the <a href="appendices.html#evaluation-framework">Appendices</a>.</p>
 
         <div class="mermaid" style="margin: 2rem 0; text-align: center;">
 graph LR
@@ -151,7 +151,7 @@ graph LR
             </tr>
             <tr>
               <td>Human correlation studies</td>
-              <td>Planned</td>
+              <td>Not yet conducted. A priority for future research, subject to funding.</td>
             </tr>
           </tbody>
         </table>
@@ -161,7 +161,7 @@ graph LR
         <!-- 2.1 Neuromyth Identification -->
         <h2 id="neuromyths">2.1 Neuromyth Identification</h2>
 
-        <p>The Neuromyths Survey tests whether AI systems can correctly classify true and false claims about the brain and learning. This benchmark is adapted from the 2012 Dekker et al. study, which documented the prevalence of neuromyths among teachers in the UK and the Netherlands. Richter et al. (2025) subsequently tested a small number of LLMs on these items and found roughly 80% accuracy in isolation but sycophantic behaviour in applied contexts. AlignED extends this work by testing across a broader suite of models (up to 31), using multiple prompting techniques (including adversarial and authority framings), and examining temperature sensitivity and test-retest reliability.</p>
+        <p>The Neuromyths Survey tests whether AI systems can correctly classify true and false claims about the brain and learning. This benchmark is adapted from the 2012 Dekker et al. study, which documented the prevalence of neuromyths among teachers in the UK and the Netherlands. Richter et al. (2025) subsequently tested a small number of LLMs on these items and found roughly 80% accuracy in isolation but sycophantic behaviour in applied contexts. AlignED extends this work by testing across a broader suite of models (31), using multiple prompting techniques (including adversarial and authority framings), and examining temperature sensitivity and test-retest reliability.</p>
 
         <div class="metric-grid">
           <div class="metric-card">
@@ -305,7 +305,9 @@ graph LR
         </table>
 
         <h3>Scoring process</h3>
-        <p>Responses are evaluated by an LLM judge (Claude 4.5 Sonnet) using the structured rubric above. The judge provides a numerical score (0-3), reasoning explaining the score, and identification of key mechanisms mentioned or missed. A sample of responses has been manually validated to check scoring consistency. Systematic multi-judge validation is planned.</p>
+        <p>Responses are evaluated by an LLM judge (Claude 4.5 Sonnet) using the structured rubric above. An earlier scoring run using Claude 4.5 Haiku was found to be too lenient, accepting generic responses without requiring the technical specificity demanded by the rubric. Scores were re-graded with Claude 4.5 Sonnet, which produced substantially different results for some models. Of the 360 total scores, 356 use the Sonnet judge; 4 use Haiku as fallback where Sonnet responses were unparseable.</p>
+
+        <p>There are several ways the judge validation could be strengthened: using more capable models as they become available, using multiple judges per response, drawing judges from different model families to reduce shared biases, and having human experts score a subset of responses to establish human-LLM correlation. Each of these steps would strengthen the validity argument but also increases cost substantially, particularly human scoring. A single scoring run across 30 models and 12 scenarios is relatively inexpensive; multi-judge validation with three judges from different providers multiplies that cost, and human expert panels more so. Finding the right balance between validation rigour and practical sustainability is an open question, particularly for a benchmark suite designed to be updated continuously.</p>
 
         <details>
           <summary>Prompt template</summary>
@@ -427,7 +429,7 @@ Your answer (A/B/C/D):</code></pre>
         <p>High accuracy with low position-swap consistency suggests the model is getting answers right by chance in some orientations. High consistency with low accuracy would indicate a systematic but incorrect judgement strategy. The ideal is high scores on both metrics.</p>
 
         <h3>Excluded models</h3>
-        <p>Four models were excluded from the ACARA results due to invalid response formats (0% accuracy from inability to produce valid judgements): DeepSeek R1, Gemini 3 Pro, GPT-5.2, and GPT-5 Mini.</p>
+        <p>Three models were excluded from the ACARA results due to invalid response formats (0% accuracy from inability to produce valid judgements): DeepSeek R1, Gemini 3 Pro, and GPT-5 Mini.</p>
 
         <details>
           <summary>Comparative judgement prompt template</summary>
@@ -495,7 +497,7 @@ REASONING: [one sentence]</code></pre>
         </details>
 
         <!-- 2.5 Evaluation Dimensions -->
-        <h2 id="dimensions">2.5 Evaluation Dimensions</h2>
+        <h2 id="dimensions">2.5 Robustness and calibration probes (neuromyths)</h2>
 
         <p>Accuracy on a benchmark tells only part of the story. A model scoring 90% under controlled conditions may behave very differently in real-world deployment. AlignED evaluates multiple dimensions to reveal whether correct responses reflect stable knowledge or surface-level pattern matching. These probes are currently complete for neuromyth identification only.</p>
 
@@ -508,7 +510,7 @@ REASONING: [one sentence]</code></pre>
           KRI = min(Accuracy_T0.5, Accuracy_T1.0) / Accuracy_T0
         </div>
 
-        <p>A KRI of 1.0 indicates perfect robustness (no degradation). Lower values indicate that correct answers at T=0 may be fragile.</p>
+        <p>A KRI of 1.0 indicates perfect robustness (no degradation). Lower values indicate that correct answers at T=0 may be fragile. KRI is an exploratory metric developed for this project. It attempts to capture temperature robustness as a single reportable number and should be treated as a pilot measure.</p>
 
         <p><strong>Key finding:</strong> Most evaluated models show exceptional temperature robustness on this task, with average accuracy variation of only 0.6% across temperature settings. Neuromyth classification accuracy appears relatively insensitive to temperature for most models.</p>
 
@@ -521,7 +523,7 @@ REASONING: [one sentence]</code></pre>
           PSI = (Items with inconsistent responses) / (Total items)
         </div>
 
-        <p>A PSI of 0% indicates perfect consistency. Higher values suggest the model is influenced by framing rather than content.</p>
+        <p>A PSI of 0% indicates perfect consistency. Higher values suggest the model is influenced by framing rather than content. PSI is an exploratory metric developed for this project. It attempts to capture prompt sensitivity as a single reportable number and should be treated as a pilot measure.</p>
 
         <p><strong>Key finding:</strong> Average PSI across models is 7.1%, indicating relatively low prompt sensitivity. However, adversarial framings (presenting myths as "research-backed") do increase error rates for some models.</p>
 

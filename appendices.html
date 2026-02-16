@@ -46,7 +46,8 @@
             <li><a href="#benchmark-items">A: Benchmark Items</a></li>
             <li><a href="#data-access">B: Data Access</a></li>
             <li><a href="#citation">C: Citation</a></li>
-            <li><a href="#revision-history">D: Revision History</a></li>
+            <li><a href="#evaluation-framework">D: Evaluation Framework</a></li>
+            <li><a href="#revision-history">E: Revision History</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
@@ -406,10 +407,24 @@
         <p>We would appreciate it if you let us know about any work that builds on AlignED. Please drop us a note at the address listed under <a href="#contact">Contact</a>.</p>
 
         <!-- ============================================================ -->
-        <!-- APPENDIX D: REVISION HISTORY                                 -->
+        <!-- APPENDIX D: EVALUATION FRAMEWORK                             -->
         <!-- ============================================================ -->
 
-        <h2 id="revision-history">Appendix D: Revision History</h2>
+        <h2 id="evaluation-framework">Appendix D: Evaluation Framework</h2>
+
+        <p>The full evaluation framework used to audit each benchmark for completeness and rigour. This framework is designed to be reusable for future evaluations beyond the current AlignED suite.</p>
+
+        <p>The framework defines the components required for a complete, rigorous LLM evaluation. It covers item preparation (construct definition, source materials, transformation, answer key development), per-run configuration (prompt templates, model specification, run parameters, eval items), validation protocol (Tier 1 baseline reliability, Tier 2 extended probes, Tier 3 LLM-as-judge validation), scoring pipeline (extraction, deterministic and judgement-based scoring), exports (human-reviewable outputs, shareable datasets), and performance outcomes (item-level scores, intramodel reliability, summary metrics, narrative reporting).</p>
+
+        <p>Each benchmark in AlignED is audited against this framework. The status of each component is tracked using a simple key: complete (evidence exists and is sufficient), partial (some evidence exists but incomplete), missing (no evidence found), or not applicable.</p>
+
+        <p><strong>Full framework document:</strong> <a href="https://github.com/trgallagher-research/AlignED/blob/main/aligned_eval_framework.md" target="_blank">aligned_eval_framework.md on GitHub</a></p>
+
+        <!-- ============================================================ -->
+        <!-- APPENDIX E: REVISION HISTORY                                 -->
+        <!-- ============================================================ -->
+
+        <h2 id="revision-history">Appendix E: Revision History</h2>
 
         <ul>
           <li><strong>February 2026:</strong> Site restructured as academic paper. Composite EAI score removed in favour of per-benchmark reporting. ACARA standards-based grading pilot added. Model pool expanded to 32 models across five providers. Evaluation framework formalised.</li>
