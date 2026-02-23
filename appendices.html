@@ -11,6 +11,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-page="appendices">
+  <!-- Redirect Banner -->
+  <div class="redirect-banner" id="redirect-banner">
+    This site is archived. Visit <a href="https://trgallagher-research.github.io/AlignED-research-reports/">AlignED Research Reports</a> for the current version.
+    <button class="dismiss-btn" onclick="document.getElementById('redirect-banner').style.display='none'">&times;</button>
+  </div>
+
+  <style>
+    .redirect-banner { background: #3B6B9A; color: white; padding: 0.75rem 2rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.9rem; position: relative; }
+    .redirect-banner a { color: white; text-decoration: underline; font-weight: 600; }
+    .redirect-banner .dismiss-btn { position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 1.2rem; cursor: pointer; padding: 0.25rem 0.5rem; opacity: 0.7; }
+    .redirect-banner .dismiss-btn:hover { opacity: 1; }
+  </style>
 
   <header>
     <div class="container">
