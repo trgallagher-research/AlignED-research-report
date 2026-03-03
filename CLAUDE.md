@@ -4,7 +4,7 @@
 
 AlignED is an independent benchmarking project that evaluates AI model performance on tasks related to professional teaching knowledge. This is a static HTML/CSS/JS site hosted on GitHub Pages. No build tools, no templating. Text is written directly in each page's HTML file.
 
-The site is structured as a living academic paper with six pages following a standard research paper arc.
+The site is structured as a frozen academic paper with six pages following a standard research paper arc. It is not updated after publication.
 
 ## File Structure
 
